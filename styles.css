@@ -1,0 +1,3113 @@
+﻿/* Standalone home selection screen — extracted from SCHEME_APP CompanyPage */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;600;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #ffffff;
+  color: #1f2937;
+  -webkit-font-smoothing: antialiased;
+}
+:root {
+  --app-page-gutter: 10px;
+  --cjm-maroon: #982021;
+  --cjm-maroon-dark: #6d1819;
+  --cjm-theme-header-grad: linear-gradient(135deg, #fffaf3 0%, #f8efe8 35%, #c44a4b 72%, #982021 100%);
+}
+#company-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+.reg-premium-inner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.reg-premium-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #ffffff;
+}
+/**
+ * Challani logo wordmark â€” Cinzel (roman caps, matches brand logo).
+ * Use class .challani-font on CHALLANI text, or <ChallaniText text="â€¦" /> for mixed strings.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap');
+
+:root {
+  --font-challani: 'Cinzel', Georgia, 'Times New Roman', serif;
+  --challani-brand-maroon: #912b2b;
+}
+
+.challani-font,
+.challani-font * {
+  font-family: var(--font-challani) !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9d1f21;
+}
+
+.challani-font--tagline {
+  font-weight: 600;
+  letter-spacing: 0.28em;
+}
+
+/* Primary brand header (auth, company) */
+.cjm-brand-header-title {
+  font-family: var(--font-challani) !important;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.cjm-brand-header-tagline {
+  font-family: var(--font-challani) !important;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+}
+
+.cjm-brand-header--light .cjm-brand-header-title {
+  color: var(--challani-brand-maroon, var(--cjm-maroon, #982021));
+}
+
+/* Dashboard header â€” Challani (CJM) */
+.home-app-chrome--cjm .home-header-brand-title,
+.home-app-chrome--cjm .home-header-brand-tagline {
+  font-family: var(--font-challani) !important;
+}
+
+.home-app-chrome--cjm .home-header-brand-title {
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.home-app-chrome--cjm .home-header-brand-tagline {
+  font-weight: 600;
+  letter-spacing: 0.22em;
+}
+
+/* Company selection â€” CJM card */
+#company-page.company-selection-page .company-card.cjm .company-card-title {
+  font-family: var(--font-challani) !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+#company-page.company-selection-page .company-card.cjm .company-card-sub {
+  font-family: var(--font-challani) !important;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+}
+
+/* Challani hero dashboard tile (Digi Gold) */
+.home-dashboard-body--cjm .brand-dash-hero-brand,
+.home-dashboard-body--cjm .brand-dash-hero-title {
+  font-family: var(--font-challani) !important;
+}
+
+.home-dashboard-body--cjm .brand-dash-hero-brand {
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.home-dashboard-body--cjm .brand-dash-hero-title {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Flow pages â€” brand name in intro copy */
+.np-brand-text,
+.mp-brand-text,
+.dg-brand-text {
+  font-family: var(--font-challani) !important;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+/* Legacy premium shell (if used) */
+.cjm-p-brand h1 {
+  font-family: var(--font-challani) !important;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.cjm-p-brand p {
+  font-family: var(--font-challani) !important;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+}
+ /**
+ * Fedha & Lille logo typography (partner brands).
+ * Primary: Playfair Display (high-contrast serif).
+ * CHALLANI line: Montserrat (clean sans caps) â€” not Cinzel.
+ * Lille â€œbyâ€: Pinyon Script.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Pinyon+Script&display=swap');
+
+:root {
+  --font-fedha-primary: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-fedha-challani: 'Montserrat', system-ui, sans-serif;
+  --font-lille-primary: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-lille-script: 'Pinyon Script', 'Brush Script MT', cursive;
+  --font-lille-challani: 'Montserrat', system-ui, sans-serif;
+  --fedha-brand-green: #08403d;
+  --lille-brand-pink: #db2777;
+}
+
+/* Partner CHALLANI (sans) â€” overrides Cinzel inside Fedha/Lille UI */
+.partner-challani-font {
+  font-family: var(--font-fedha-challani) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+.home-app-chrome--lille .partner-challani-font,
+.lille-font-scope .partner-challani-font {
+  font-family: var(--font-lille-challani) !important;
+}
+
+.fedha-font-primary {
+  font-family: var(--font-fedha-primary) !important;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.lille-font-primary {
+  font-family: var(--font-lille-primary) !important;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: none;
+}
+
+.fedha-font-by {
+  font-family: var(--font-fedha-primary) !important;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.72em;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  margin-right: 0.2em;
+}
+
+.lille-font-by {
+  font-family: var(--font-lille-script) !important;
+  font-weight: 400;
+  font-size: 0.95em;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  margin-right: 0.15em;
+  line-height: 1;
+}
+
+/* Scheme names â€” Amara, Little Wonder, plan taglines */
+.lille-scheme-font {
+  font-family: var(--font-lille-primary) !important;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+.lille-scheme-font--upper {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Dashboard header â€” beat #home-page uppercase rules */
+#home-page.home-dashboard-page .home-app-chrome--fedha .home-header-brand-title.fedha-font-primary,
+#home-page.home-dashboard-page .home-app-chrome--fedha .home-header-brand-title {
+  font-family: var(--font-fedha-primary) !important;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: none;
+}
+
+#home-page.home-dashboard-page .home-app-chrome--lille .home-header-brand-title.lille-font-primary,
+#home-page.home-dashboard-page .home-app-chrome--lille .home-header-brand-title {
+  font-family: var(--font-lille-primary) !important;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+#home-page.home-dashboard-page .home-app-chrome--fedha .home-header-brand-tagline,
+#home-page.home-dashboard-page .home-app-chrome--lille .home-header-brand-tagline {
+  font-family: var(--font-fedha-challani) !important;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: none;
+}
+
+#home-page.home-dashboard-page .home-app-chrome--lille .home-header-brand-tagline {
+  font-family: var(--font-lille-challani) !important;
+}
+
+/* Fedha/Lille: CHALLANI in taglines uses sans, not Cinzel */
+.home-app-chrome--fedha .challani-font,
+.home-app-chrome--lille .challani-font {
+  font-family: var(--font-fedha-challani) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+}
+
+.home-app-chrome--lille .challani-font {
+  font-family: var(--font-lille-challani) !important;
+}
+
+/* Company cards */
+#company-page.company-selection-page .company-card.fedha .company-card-title {
+  font-family: var(--font-fedha-primary) !important;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+
+#company-page.company-selection-page .company-card.lille .company-card-title {
+  font-family: var(--font-lille-primary) !important;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.05em;
+}
+
+/* Flow pages â€” brand name in intro (Fedha / Lille, not Challani) */
+.np-page.np-theme-fedha .np-brand-text,
+.mp-page.mp-theme-fedha .mp-brand-text {
+  font-family: var(--font-fedha-primary) !important;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.np-page.np-theme-lille .np-brand-text,
+.mp-page.mp-theme-lille .mp-brand-text,
+.dg-page.dg-theme-lille .dg-brand-text {
+  font-family: var(--font-lille-primary) !important;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.03em;
+}
+
+.dg-page.dg-theme-fedha .dg-brand-text {
+  font-family: var(--font-fedha-primary) !important;
+  font-weight: 700;
+  text-transform: none;
+}
+ /* Shared auth shell â€” mild gradient bg + gold corner ornament (all login-premium pages) */
+
+.auth-premium-page,
+.login-premium-page,
+#company-page.company-selection-page,
+#about-us-page.about-us-page {
+  --auth-gold: #c9a227;
+  --auth-gold-light: #e8c45a;
+  --auth-gold-dark: #b8921f;
+  --auth-gold-rgb: 201, 162, 39;
+  --auth-btn-bg: #c9a227;
+  --auth-btn-text: #9d1f21;
+  --sign-in-btn-bg: #c9a227;
+}
+
+.login-premium-page {
+  --font-auth-heading: 'Libre Baskerville', serif;
+  --font-auth-text: 'Poppins', sans-serif;
+}
+
+/* Full-viewport shell â€” same bg + layout on login, sign up, MPIN, forgot */
+html.challani-mobile-app .auth-premium-page.login-premium-page,
+html.challani-mobile-app .auth-premium-page {
+  background: transparent;
+}
+
+html.challani-mobile-app .auth-premium-page.login-premium-page .reg-premium-bg.reg-premium-bg--cream,
+html.challani-mobile-app .auth-premium-page .reg-premium-bg.reg-premium-bg--cream {
+  background: #ffffff;
+}
+
+html.challani-mobile-app .auth-premium-page.login-premium-page .reg-premium-inner,
+html.challani-mobile-app .auth-premium-page .reg-premium-inner {
+  justify-content: flex-start;
+  align-items: stretch;
+  flex: 1;
+  min-height: 100%;
+}
+
+.auth-premium-page .company-selection-shell,
+.auth-premium-page .about-us-flow-shell,
+.login-premium-page .sign-in-shell,
+.login-premium-page .mpin-auth-shell,
+.login-premium-page .forgot-mpin-shell,
+.login-premium-page .company-selection-shell,
+.login-premium-page .about-us-flow-shell,
+#company-page.company-selection-page .company-selection-shell,
+#about-us-page.about-us-page .about-us-flow-shell {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  max-height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.auth-flow-shell__scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.auth-flow-shell__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+/* Page column must not scroll â€” only auth-flow-shell__scroll does */
+.login-premium-page .reg-premium-inner,
+#company-page.company-selection-page .reg-premium-inner,
+#about-us-page.about-us-page .reg-premium-inner {
+  overflow: hidden;
+  overflow-y: hidden;
+}
+
+.login-premium-page .auth-form-center,
+.login-premium-page .mpin-auth-center,
+.login-premium-page .auth-form-footer,
+.login-premium-page .mpin-auth-footer {
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+/* Shared auth form â€” top (logo header band) / middle (heading + fields) / bottom (CTA) */
+.auth-page-header,
+.login-premium-page .auth-page-header,
+.login-premium-page .auth-form-header,
+.login-premium-page .mpin-auth-header {
+  flex-shrink: 0;
+}
+
+.login-premium-page .auth-form-header,
+.login-premium-page .mpin-auth-header {
+  padding-top: clamp(1rem, 4vh, 1.5rem);
+  padding-bottom: clamp(1rem, 4vh, 2rem);
+  text-align: center;
+}
+
+.login-premium-page .auth-form-center,
+.login-premium-page .mpin-auth-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+  padding-top: clamp(0.5rem, 2vh, 1rem);
+  padding-bottom: clamp(0.5rem, 2vh, 1rem);
+}
+
+/* Auth form fields â€” vertically centred between logo and bottom CTA */
+#login-page .auth-form-center {
+  justify-content: center;
+  align-items: center;
+  padding-top: clamp(1.75rem, 8vh, 3.25rem);
+  padding-bottom: clamp(0.75rem, 3vh, 1.5rem);
+}
+
+#login-page .auth-form-heading,
+#login-page .sign-in-form {
+  align-self: stretch;
+  max-width: 20rem;
+  margin-inline: auto;
+  width: 100%;
+}
+
+#login-page .auth-form-heading {
+  text-align: center;
+}
+
+#login-page .auth-form-body {
+  margin-top: clamp(0.65rem, 3vh, 1.15rem);
+}
+
+#register-page .auth-form-center,
+#mpin-setup-page .mpin-auth-center,
+#mpin-page .mpin-auth-center,
+#forgot-page .mpin-auth-center {
+  justify-content: center;
+  padding-top: clamp(1.75rem, 8vh, 3.25rem);
+  padding-bottom: clamp(0.75rem, 3vh, 1.5rem);
+}
+
+#register-page .auth-form-body {
+  margin-top: clamp(0.65rem, 3vh, 1.15rem);
+}
+
+.login-premium-page .auth-form-heading,
+.login-premium-page .mpin-auth-heading {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 20rem;
+  margin-inline: auto;
+  padding-top: 0;
+  padding-bottom: clamp(1rem, 3vh, 1.5rem);
+  text-align: left;
+}
+
+.login-premium-page .auth-form-body,
+.login-premium-page .mpin-auth-body {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.login-premium-page .auth-form-footer,
+.login-premium-page .mpin-auth-footer {
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: auto;
+  padding-top: clamp(1.25rem, 5vh, 2.25rem);
+  padding-bottom: max(0.85rem, env(safe-area-inset-bottom, 0px));
+}
+
+.login-premium-page .reg-premium-bg--cream {
+  background: #ffffff;
+}
+
+.auth-premium-page.login-premium-page .auth-corner-overlay {
+  position: absolute;
+  top: 0.6875rem;
+  right: -1.625rem;
+  width: min(44vw, 11.5rem);
+  height: min(44vw, 11.5rem);
+  pointer-events: none;
+  z-index: 1;
+  transform: rotate(12deg);
+  transform-origin: top right;
+}
+
+.auth-premium-page.login-premium-page .auth-corner-overlay__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top right;
+  opacity: 0.1;
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 479px) {
+  .auth-premium-page.login-premium-page .auth-corner-overlay {
+    width: min(48vw, 10rem);
+    height: min(48vw, 10rem);
+    transform: rotate(10deg);
+  }
+
+  .auth-premium-page.login-premium-page .auth-corner-overlay__img {
+    opacity: 0.45;
+  }
+}
+
+/* Auth headings â€” Libre Baskerville (page titles) */
+.login-premium-page .sign-in-title,
+.login-premium-page .sign-in-hero-title,
+.login-premium-page .mpin-auth-title,
+.login-premium-page .forgot-mpin-title,
+.login-premium-page .registration-success-title {
+  font-family: var(--font-auth-heading);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.login-premium-page .sign-in-title,
+.login-premium-page .sign-in-hero-title,
+.login-premium-page .mpin-auth-title,
+.login-premium-page .forgot-mpin-title,
+.login-premium-page .registration-success-title {
+  font-weight: 700;
+}
+
+.login-premium-page .sign-in-title,
+.login-premium-page .sign-in-hero-title,
+.login-premium-page .mpin-auth-title,
+.login-premium-page .forgot-mpin-title {
+  color: var(--cjm-maroon, #982021);
+}
+
+.login-premium-page .registration-success-title {
+  color: #2e9e5b;
+}
+
+/* Cinzel wordmark inside register hero heading */
+.login-premium-page .sign-in-hero-title .challani-font {
+  font-size: 1em;
+  letter-spacing: 0.08em;
+}
+
+/* Auth body text â€” Poppins (taglines, prompts, labels, helpers) */
+.login-premium-page .sign-in-hero-tagline,
+.login-premium-page .sign-in-label,
+.login-premium-page .sign-in-error,
+.login-premium-page .sign-in-signup-prompt,
+.login-premium-page .sign-in-signup-link,
+.login-premium-page .sign-in-inline-link,
+.login-premium-page .login-terms-check span,
+.login-premium-page .mpin-auth-subtitle,
+.login-premium-page .mpin-auth-hint,
+.login-premium-page .mpin-auth-error,
+.login-premium-page .mpin-box-label,
+.login-premium-page .mpin-enter-helper,
+.login-premium-page .mpin-enter-attempts,
+.login-premium-page .mpin-forgot-link,
+.login-premium-page .forgot-mpin-subtitle,
+.login-premium-page .forgot-mpin-label,
+.login-premium-page .forgot-mpin-hint,
+.login-premium-page .forgot-mpin-resend,
+.login-premium-page .forgot-mpin-resend-btn,
+.login-premium-page .forgot-mpin-back-link,
+.login-premium-page .forgot-mpin-phone,
+.login-premium-page .registration-success-message {
+  font-family: var(--font-auth-text);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.login-premium-page .sign-in-label,
+.login-premium-page .sign-in-error,
+.login-premium-page .mpin-auth-error,
+.login-premium-page .forgot-mpin-label,
+.login-premium-page .mpin-box-label,
+.login-premium-page .sign-in-hero-tagline,
+.login-premium-page .sign-in-signup-prompt,
+.login-premium-page .mpin-auth-subtitle,
+.login-premium-page .mpin-auth-hint,
+.login-premium-page .mpin-enter-helper,
+.login-premium-page .mpin-enter-attempts,
+.login-premium-page .forgot-mpin-subtitle,
+.login-premium-page .forgot-mpin-hint,
+.login-premium-page .forgot-mpin-resend,
+.login-premium-page .registration-success-message {
+  font-weight: 400;
+}
+
+/* Auth buttons â€” Poppins */
+.login-premium-page .sign-in-submit,
+.login-premium-page .forgot-mpin-submit,
+.login-premium-page .mpin-change-btn,
+.login-premium-page .registration-success-continue {
+  font-family: var(--font-auth-text);
+  font-optical-sizing: auto;
+}
+
+/* Text inputs â€” system UI for clarity */
+.login-premium-page .sign-in-input,
+.login-premium-page .forgot-mpin-input {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-optical-sizing: auto;
+}
+
+/* MPIN / OTP digit cells â€” underline style */
+.login-premium-page .mpin-box,
+.login-premium-page .forgot-mpin-otp-box {
+  width: 2.15rem;
+  min-height: 2.25rem;
+  padding: 0.2rem 0 0.45rem;
+  border: none;
+  border-bottom: 1px solid #c4c4c4;
+  border-radius: 0;
+  background: transparent;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  color: #111827;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-optical-sizing: auto;
+}
+
+.login-premium-page .mpin-box:focus,
+.login-premium-page .forgot-mpin-otp-box:focus {
+  outline: none;
+  border-bottom-color: var(--cjm-maroon, #982021);
+  box-shadow: none;
+}
+
+.login-premium-page .mpin-box--filled,
+.login-premium-page .forgot-mpin-otp-box--filled {
+  border-bottom-color: #9ca3af;
+}
+
+.login-premium-page .mpin-box--error,
+.login-premium-page .forgot-mpin-otp-box--error {
+  border-bottom-color: var(--sign-in-error, #e57373);
+}
+
+/* Primary gold CTA â€” login, register, MPIN, forgot, brand verify, company */
+.auth-premium-page .sign-in-submit,
+.auth-premium-page .forgot-mpin-submit,
+.auth-premium-page .mpin-change-btn,
+.auth-premium-page .registration-success-continue,
+.auth-premium-page .reg-premium-btn:not(.reg-premium-btn-outline),
+#company-page.company-selection-page .company-about-btn {
+  background: var(--auth-btn-bg, #c9a227);
+  color: var(--auth-btn-text, #9d1f21);
+  box-shadow: 0 2px 8px rgba(var(--auth-gold-rgb, 201, 162, 39), 0.28);
+}
+
+.auth-premium-page .sign-in-submit:hover:not(:disabled),
+.auth-premium-page .forgot-mpin-submit:hover:not(:disabled),
+.auth-premium-page .mpin-change-btn:hover:not(:disabled),
+.auth-premium-page .registration-success-continue:hover:not(:disabled),
+.auth-premium-page .reg-premium-btn:not(.reg-premium-btn-outline):hover:not(:disabled),
+#company-page.company-selection-page .company-about-btn:hover {
+  box-shadow: 0 4px 12px rgba(var(--auth-gold-rgb, 201, 162, 39), 0.38);
+}
+ /* Auth / company golden header â€” responsive, edge-to-edge, fixed height */
+
+.auth-premium-page,
+.login-premium-page,
+#company-page.company-selection-page,
+#about-us-page.about-us-page,
+#home-page.home-dashboard-page--cjm,
+.flow-page-chrome--cjm-auth,
+#contact-us-page.contact-us-page--cjm {
+  --auth-header-side: max(var(--app-page-gutter, 10px), 0.75rem);
+  --auth-header-wave-border: #c9a227;
+  --auth-header-wave-border-dark: #b8921f;
+  --auth-header-cream-top: #ffffff;
+  --auth-header-cream-mid: #fff8f0;
+  --auth-header-cream-bottom: #fff3e6;
+  --dash-header-toolbar-size: 2.25rem;
+}
+
+/* Legacy default header band â€” non-hero only */
+.auth-page-header:not(.auth-page-header--hero),
+.login-premium-page .auth-page-header:not(.auth-page-header--hero),
+#company-page .auth-page-header:not(.auth-page-header--hero),
+#about-us-page .auth-page-header:not(.auth-page-header--hero) {
+  --auth-header-height: clamp(10.5rem, 22dvh, 12.5rem);
+  --auth-header-logo-w: clamp(7.25rem, 30vw, 10rem);
+  --auth-header-wave-inset: clamp(1.25rem, 4.2dvh, 1.65rem);
+}
+
+.auth-page-header,
+.login-premium-page .auth-page-header,
+#company-page .auth-page-header,
+#about-us-page .auth-page-header,
+#home-page.home-dashboard-page--cjm .auth-page-header,
+.flow-page-chrome--cjm-auth .auth-page-header,
+#contact-us-page.contact-us-page--cjm .auth-page-header {
+  position: relative;
+  flex: 0 0 var(--auth-header-height);
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  height: var(--auth-header-height);
+  min-height: var(--auth-header-height);
+  max-height: var(--auth-header-height);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 0 !important;
+  background: #ffffff;
+}
+
+.auth-page-header__jewel-panel,
+.login-premium-page .auth-page-header__jewel-panel,
+#company-page .auth-page-header__jewel-panel,
+#about-us-page .auth-page-header__jewel-panel,
+#home-page.home-dashboard-page--cjm .auth-page-header__jewel-panel,
+.flow-page-chrome--cjm-auth .auth-page-header__jewel-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--auth-gold-dark, #b8921f) 0%,
+    var(--auth-gold, #c9a227) 42%,
+    #fff8ec 100%
+  );
+}
+
+.auth-page-header__inner:not(.auth-page-header__inner--hero),
+.login-premium-page .auth-page-header__inner:not(.auth-page-header__inner--hero),
+#home-page.home-dashboard-page--cjm .auth-page-header__inner:not(.auth-page-header__inner--hero),
+.flow-page-chrome--cjm-auth .auth-page-header__inner:not(.auth-page-header__inner--hero) {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: calc(0.5rem + env(safe-area-inset-top, 0px)) var(--auth-header-side) var(--auth-header-wave-inset);
+  box-sizing: border-box;
+}
+
+.auth-page-header__brand:not(.auth-page-header__brand--center),
+.login-premium-page .auth-page-header__brand:not(.auth-page-header__brand--center) {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+  height: 100%;
+}
+
+.auth-page-header--with-leading.auth-page-header--center-brand .auth-page-header__inner {
+  display: grid;
+  grid-template-columns: var(--dash-header-toolbar-size, 2.25rem) minmax(0, 1fr)
+    var(--dash-header-toolbar-size, 2.25rem);
+  align-items: center;
+}
+
+.auth-page-header--with-leading .auth-page-header__inner:not(:has(.auth-page-header__trailing)) {
+  display: block;
+}
+
+.auth-page-header__leading {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: calc(
+    var(--auth-header-height) - var(--auth-header-wave-inset) - 0.5rem - env(safe-area-inset-top, 0px)
+  );
+}
+
+.auth-page-header--center-brand .auth-page-header__leading {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  min-height: 0;
+}
+
+.auth-page-header--center-brand .auth-page-header__trailing {
+  grid-column: 3;
+  grid-row: 1;
+  width: var(--dash-header-toolbar-size, 2.25rem);
+  height: var(--dash-header-toolbar-size, 2.25rem);
+  justify-self: end;
+}
+
+.auth-page-header--center-brand .auth-page-header__brand {
+  position: relative;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  inset: auto;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  pointer-events: none;
+}
+
+.auth-page-header--center-brand .auth-page-header__brand .auth-page-header__logo-btn {
+  transform: translateX(var(--dash-header-logo-nudge, 0px));
+  pointer-events: auto;
+}
+
+.auth-page-header--center-brand .auth-page-header__brand > .auth-page-header__logo {
+  transform: translateX(var(--dash-header-logo-nudge, 0px));
+  pointer-events: auto;
+}
+
+.auth-page-header--with-leading .auth-page-header__brand:not(.auth-page-header__brand--center) {
+  position: relative;
+  z-index: 3;
+}
+
+.auth-page-header__brand--center .auth-page-header__logo-btn,
+.auth-page-header__brand--center > .auth-page-header__logo {
+  pointer-events: auto;
+}
+
+.auth-page-header__brand--center .auth-page-header__logo {
+  object-position: center center;
+  margin-inline: auto;
+}
+
+.auth-page-header__brand--center .auth-page-header__logo-btn {
+  margin-inline: 0;
+}
+
+.auth-page-header__brand--center .auth-page-header__logo-btn .auth-page-header__logo {
+  object-position: center center;
+}
+
+.auth-page-header__logo,
+.login-premium-page .auth-page-header__logo {
+  display: block;
+  width: var(--auth-header-logo-w);
+  max-width: 100%;
+  height: auto;
+  max-height: calc(var(--auth-header-height) - var(--auth-header-wave-inset) - 1.5rem - env(safe-area-inset-top, 0px));
+  margin: 0;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.auth-page-header__logo-btn {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  position: absolute;
+  top: -10px;
+}
+
+.auth-page-header--hero .auth-page-header__logo-btn {
+  position: relative;
+  top: 0;
+}
+
+.auth-page-header__logo-btn:focus-visible {
+  outline: 2px solid var(--cjm-home-maroon, #982021);
+  outline-offset: 3px;
+  border-radius: 0.35rem;
+}
+
+.auth-page-header__logo-btn:active {
+  opacity: 0.9;
+}
+
+.auth-page-header__ornament,
+.login-premium-page .auth-page-header__ornament {
+  position: absolute;
+  top: calc(0.25rem + env(safe-area-inset-top, 0px));
+  right: var(--auth-header-side);
+  bottom: calc(var(--auth-header-wave-inset) + 0.15rem);
+  left: 28%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+  pointer-events: none;
+}
+
+.auth-page-header__ornament-img,
+.login-premium-page .auth-page-header__ornament-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(100%, 13rem);
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center right;
+}
+
+.auth-page-header__wave-border {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.auth-page-header__wave-border path {
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter:
+    drop-shadow(0 0 1px rgba(201, 162, 39, 0.35))
+    drop-shadow(0 3px 8px rgba(155, 101, 41, 0.22));
+}
+
+@media (max-width: 479px) {
+  .auth-premium-page,
+  .login-premium-page,
+  #company-page.company-selection-page,
+  #home-page.home-dashboard-page--cjm,
+  .flow-page-chrome--cjm-auth {
+    --auth-header-height: clamp(10rem, 21dvh, 12rem);
+    --auth-header-logo-w: clamp(6rem, 26vw, 7.75rem);
+    --auth-header-wave-inset: clamp(1.15rem, 4dvh, 1.5rem);
+  }
+
+  .auth-page-header__inner:not(.auth-page-header__inner--hero),
+  .login-premium-page .auth-page-header__inner:not(.auth-page-header__inner--hero),
+  #home-page.home-dashboard-page--cjm .auth-page-header__inner:not(.auth-page-header__inner--hero),
+  .flow-page-chrome--cjm-auth .auth-page-header__inner:not(.auth-page-header__inner--hero) {
+    padding-top: calc(0.4rem + env(safe-area-inset-top, 0px));
+  }
+
+  .auth-page-header__ornament,
+  .login-premium-page .auth-page-header__ornament {
+    left: 26%;
+  }
+
+  .auth-page-header__ornament-img,
+  .login-premium-page .auth-page-header__ornament-img {
+    max-width: min(100%, 11.5rem);
+  }
+}
+
+/* Auth / company pages â€” square top edge (no rounded header corners) */
+@media (min-width: 520px) {
+  html.challani-mobile-app .auth-page-header,
+  html.challani-mobile-app .login-premium-page .auth-page-header,
+  html.challani-mobile-app #company-page .auth-page-header,
+  html.challani-mobile-app #about-us-page .auth-page-header,
+  html.challani-mobile-app #home-page.home-dashboard-page--cjm .auth-page-header,
+  html.challani-mobile-app .flow-page-chrome--cjm-auth .auth-page-header {
+    border-radius: 0 !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .auth-premium-page,
+  .login-premium-page,
+  #company-page.company-selection-page,
+  #home-page.home-dashboard-page--cjm,
+  .flow-page-chrome--cjm-auth {
+    --auth-header-height: clamp(10.5rem, 18dvh, 12.5rem);
+    --auth-header-logo-w: clamp(7.25rem, 22vw, 9.5rem);
+  }
+
+  .auth-page-header__inner:not(.auth-page-header__inner--hero),
+  .login-premium-page .auth-page-header__inner:not(.auth-page-header__inner--hero),
+  #home-page.home-dashboard-page--cjm .auth-page-header__inner:not(.auth-page-header__inner--hero),
+  .flow-page-chrome--cjm-auth .auth-page-header__inner:not(.auth-page-header__inner--hero) {
+    padding-left: max(var(--auth-header-side), 1rem);
+    padding-right: max(var(--auth-header-side), 1rem);
+  }
+}
+
+.login-premium-page .auth-flow-shell__scroll {
+  background: #ffffff;
+}
+
+/* CJM hero header â€” one shared look: auth, company, dashboard, flow */
+.auth-page-header--hero {
+  --auth-header-height: clamp(9.5rem, 20dvh, 10.25rem);
+  --auth-header-logo-w: clamp(6.75rem, 28vw, 9.5rem);
+  --auth-header-wave-inset: clamp(0.5rem, 1.8dvh, 0.7rem);
+  --auth-header-side: max(var(--app-page-gutter, 10px), 0.75rem);
+  --auth-header-hero-wave-top: 58%;
+  --dash-header-toolbar-size: 2.25rem;
+  background: transparent;
+}
+
+.auth-page-header--hero .auth-page-header__hero-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  background: var(
+    --cjm-theme-header-grad,
+    linear-gradient(
+      135deg,
+      #fffaf3 0%,
+      #f8efe8 35%,
+      #c44a4b 72%,
+      var(--cjm-maroon, #982021) 100%
+    )
+  );
+}
+
+.auth-page-header--hero .auth-page-header__hero-jewellery {
+  position: absolute;
+  top: calc(0.25rem + env(safe-area-inset-top, 0px));
+  right: var(--auth-header-side);
+  bottom: calc(var(--auth-header-wave-inset) + 0.35rem);
+  left: auto;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 0.15rem;
+  min-width: 0;
+  max-width: 78%;
+  pointer-events: none;
+}
+
+.auth-page-header--hero .auth-page-header__hero-jewellery-piece {
+  display: block;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom;
+  flex: 0 0 auto;
+}
+
+.auth-page-header--hero .auth-page-header__hero-jewellery-piece--ornament {
+  max-width: min(100%, 28rem);
+  max-height: 320%;
+  position: relative;
+  left: 40px;
+  top: 0px;
+  rotate:20deg;
+}
+
+.auth-page-header--hero .auth-page-header__inner--hero {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: calc(0.4rem + env(safe-area-inset-top, 0px)) var(--auth-header-side)
+    calc(var(--auth-header-wave-inset) + 0.35rem);
+  box-sizing: border-box;
+}
+
+.auth-page-header--hero-toolbar .auth-page-header__inner--hero {
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.auth-page-header--hero-toolbar-trailing .auth-page-header__inner--hero {
+  justify-content: space-between;
+}
+
+.auth-page-header--hero-toolbar .auth-page-header__leading {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 0.1rem;
+}
+
+/* Logo left; menu/back top-right over jewellery */
+.auth-page-header--hero-has-nav .auth-page-header__trailing {
+  position: absolute;
+  top: calc(0.4rem + env(safe-area-inset-top, 0px));
+  right: var(--auth-header-side);
+  z-index: 7;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-page-header--hero-has-nav .auth-page-header__inner--hero {
+  position: relative;
+}
+
+.auth-page-header--hero .auth-page-header__hero-start {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.2rem;
+  min-width: 0;
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+.auth-page-header--hero .auth-page-header__trailing {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 0.1rem;
+}
+
+.auth-page-header--hero .auth-page-header__brand {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-width: 0;
+  height: auto;
+  padding-top: 0.15rem;
+}
+
+.auth-page-header--hero .auth-page-header__logo {
+  width: var(--auth-header-logo-w);
+  max-height: calc(
+    var(--auth-header-height) - var(--auth-header-wave-inset) - 1.35rem - env(safe-area-inset-top, 0px)
+  );
+  object-fit: contain;
+  object-position: left top;
+  filter: none;
+}
+
+.auth-page-header--hero .auth-page-header__hero-wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--auth-header-hero-wave-top, 58%);
+  bottom: 0;
+  z-index: 6;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+@media (max-width: 479px) {
+  .auth-page-header--hero {
+    --auth-header-height: clamp(8.75rem, 18.5dvh, 10.25rem);
+    --auth-header-logo-w: clamp(6rem, 26vw, 7.75rem);
+    --auth-header-wave-inset: clamp(0.45rem, 1.6dvh, 0.62rem);
+    --auth-header-hero-wave-top: 56%;
+  }
+
+  .auth-page-header--hero .auth-page-header__hero-jewellery {
+    max-width: 82%;
+    gap: 0.08rem;
+  }
+
+  .auth-page-header--hero .auth-page-header__hero-jewellery-piece--ornament {
+    max-width: min(100%, 12.5rem);
+  }
+}
+ /* Shared Challani golden auth header â€” dashboard + flow/wizard pages */
+
+:is(#home-page.home-dashboard-page--cjm, .flow-page-chrome--cjm-auth) {
+  --dash-header-toolbar-size: 2.25rem;
+  --dash-header-logo-nudge: -2.35rem;
+  --chrome-header-icon: var(--cjm-home-maroon, #982021);
+}
+
+.cjm-auth-header-shell {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  line-height: 0;
+}
+
+.cjm-auth-header-shell .cjm-auth-toolbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--dash-header-toolbar-size, 2.25rem);
+  height: var(--dash-header-toolbar-size, 2.25rem);
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--cjm-home-maroon, #982021);
+  cursor: pointer;
+  border-radius: 0.5rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* White nav icon on jewellery â€” home menu + flow back */
+.auth-page-header--hero-has-nav .cjm-auth-toolbar-btn {
+  color: #ffffff;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.45));
+}
+
+.auth-page-header--hero-has-nav .cjm-auth-toolbar-btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.auth-page-header--hero-has-nav .cjm-auth-toolbar-btn:active {
+  opacity: 0.88;
+}
+
+.cjm-auth-header-shell .cjm-auth-toolbar-btn:focus-visible {
+  outline: 2px solid var(--cjm-home-maroon, #982021);
+  outline-offset: 2px;
+}
+
+.cjm-auth-header-shell .cjm-auth-toolbar-btn:active {
+  opacity: 0.82;
+}
+
+.cjm-auth-header-shell .cjm-auth-toolbar-btn svg {
+  stroke: currentColor;
+  width: 1.25rem;
+  height: 1.25rem;
+  position: absolute;
+  top: 17px;
+  left: 26px;
+}
+
+.cjm-auth-header-shell .auth-page-header--center-brand .auth-page-header__brand {
+  z-index: 5;
+}
+
+.cjm-auth-header-shell .cjm-auth-header .auth-page-header__ornament {
+  left: 44%;
+}
+
+.cjm-auth-header-shell .cjm-auth-header .auth-page-header__ornament-img {
+  max-width: min(100%, 10.25rem);
+}
+
+.cjm-auth-header-shell .auth-page-header--hero .auth-page-header__logo,
+.cjm-auth-header-shell .cjm-auth-header .auth-page-header__logo,
+.auth-page-header--hero .auth-page-header__logo {
+  max-width: min(var(--auth-header-logo-w), 9.5rem);
+}
+
+.flow-page-chrome--cjm-auth {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 479px) {
+  :is(#home-page.home-dashboard-page--cjm, .flow-page-chrome--cjm-auth) {
+    --dash-header-logo-nudge: -2rem;
+  }
+
+  .cjm-auth-header-shell .cjm-auth-header .auth-page-header__ornament {
+    left: 42%;
+  }
+
+  .cjm-auth-header-shell .cjm-auth-header .auth-page-header__ornament-img {
+    max-width: min(100%, 9.5rem);
+  }
+
+  .cjm-auth-header-shell .auth-page-header--hero .auth-page-header__logo,
+  .auth-page-header--hero .auth-page-header__logo {
+    max-width: min(var(--auth-header-logo-w), 7.75rem);
+  }
+}
+
+/* CJM flow / form pages â€” white shell like dashboard */
+#new-plan-page.np-theme-cjm.schemes-page,
+#my-plan-page.mp-theme-cjm.schemes-page,
+#digi-gold-page.dg-theme-cjm.schemes-page,
+#user-profile-page.np-theme-cjm.profile-page.schemes-page,
+#bank-details-page.np-theme-cjm.profile-page.schemes-page,
+#contact-us-page.contact-us-page--cjm.schemes-page,
+#about-us-page.about-us-page--cjm.schemes-page,
+#store-locator-page.store-locator-page--cjm.schemes-page,
+#my-orders-page.orders-theme-cjm.schemes-page,
+#why-buy-page.why-buy-page--cjm.schemes-page {
+  --np-bg: #ffffff;
+  --np-bar: #ffffff;
+  --mp-bg: #ffffff;
+  --mp-bar: #ffffff;
+  --dg-bg: #ffffff;
+  --dg-bar: #ffffff;
+  --plans-bg: #ffffff;
+  --cu-bg: #ffffff;
+  --wb-bg: #ffffff;
+  --orders-bg: #ffffff;
+  --sl-surface: #ffffff;
+  background: #ffffff !important;
+}
+
+#new-plan-page.np-theme-cjm .np-step-bar,
+#my-plan-page.mp-theme-cjm .mp-step-bar,
+#digi-gold-page.dg-theme-cjm .dg-step-bar,
+#user-profile-page.np-theme-cjm .profile-step-bar,
+#bank-details-page.np-theme-cjm .profile-step-bar {
+  background: #ffffff;
+}
+
+/* CJM â€” cjm_img_header blends on gold panel (black-bg asset) */
+.cjm-auth-header-shell .auth-page-header__hero-jewellery-piece--ornament,
+.login-premium-page .auth-page-header--hero .auth-page-header__hero-jewellery-piece--ornament,
+#company-page .auth-page-header--hero .auth-page-header__hero-jewellery-piece--ornament,
+#home-page.home-dashboard-page--cjm .auth-page-header--hero .auth-page-header__hero-jewellery-piece--ornament,
+.flow-page-chrome--cjm-auth .auth-page-header--hero .auth-page-header__hero-jewellery-piece--ornament,
+#about-us-page.about-us-page--cjm .auth-page-header--hero .auth-page-header__hero-jewellery-piece--ornament {
+  mix-blend-mode: screen;
+  max-width: min(110%, 32rem);
+  left: 30px;
+  rotate: 29deg;
+  top: 80px;
+}
+
+.cjm-auth-header-shell .auth-page-header__ornament-img,
+.login-premium-page .auth-page-header__ornament-img,
+#company-page .auth-page-header__ornament-img {
+  mix-blend-mode: screen;
+}
+ /* Card shadows â€” company page (soft drop shadow) */
+
+:root {
+  --cjm-card-elevated-shadow: 4px 6px 15px rgba(139, 126, 116, 0.3);
+  --cjm-card-elevated-shadow-hover: 5px 8px 18px rgba(139, 126, 116, 0.36);
+  --cjm-card-elevated-radius: 1.0625rem;
+}
+
+#company-page.company-selection-page .company-card {
+  border-radius: var(--cjm-card-elevated-radius);
+  box-shadow: var(--cjm-card-elevated-shadow);
+}
+
+#company-page.company-selection-page .company-card--pill {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+#company-page.company-selection-page .company-card.selected {
+  box-shadow: var(--cjm-card-elevated-shadow-hover);
+}
+
+#company-page.company-selection-page .company-card:active {
+  box-shadow: 3px 5px 12px rgba(139, 126, 116, 0.26);
+}
+ /* Company cards â€” logo + text columns, curved diagonal product split (original style) */
+
+#company-page.company-selection-page .company-card {
+  --company-split-curve: 14%;
+}
+
+#company-page.company-selection-page .company-card--pill .company-card-cols {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 44%;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(0.35rem, 1.4vw, 0.5rem);
+  width: auto;
+  max-width: none;
+  min-height: 0;
+  padding: 0 clamp(0.35rem, 1.2vw, 0.45rem) 0 clamp(0.4rem, 1.6vw, 0.6rem);
+  box-sizing: border-box;
+}
+
+#company-page.company-selection-page .company-card-cols {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: center;
+  width: 52%;
+  max-width: 52%;
+  min-height: 9.75rem;
+  box-sizing: border-box;
+}
+
+#company-page.company-selection-page .company-card-col--logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 0.35rem 0.65rem 0.7rem;
+  box-sizing: border-box;
+}
+
+#company-page.company-selection-page .company-card-col--text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.45rem;
+  min-width: 0;
+  padding: 0.55rem 0.45rem 0.55rem 0;
+  box-sizing: border-box;
+}
+
+#company-page.company-selection-page .company-card--pill .company-card-col--text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  padding: 0 clamp(0.15rem, 0.8vw, 0.35rem) 0 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#company-page.company-selection-page .company-card--pill .company-card-col--product {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 56%;
+  min-width: 8rem;
+  max-width: 58%;
+  padding: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#company-page.company-selection-page .company-card--pill .company-card-col--product .company-card-product {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  clip-path: polygon(
+    var(--company-split-curve) 0%,
+    calc(var(--company-split-curve) * 0.55) 25%,
+    calc(var(--company-split-curve) * 0.35) 50%,
+    calc(var(--company-split-curve) * 0.55) 75%,
+    var(--company-split-curve) 100%,
+    100% 100%,
+    100% 0%
+  );
+}
+
+#company-page.company-selection-page .company-card--pill .company-card-col--product .company-card-product-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Shade follows the curved split on the left panel */
+#company-page.company-selection-page .company-card-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: transparent;
+  clip-path: polygon(0 0, 52% 0, 46% 50%, 52% 100%, 0 100%);
+  pointer-events: none;
+}
+
+#company-page.company-selection-page .company-card-shade::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    102deg,
+    rgba(0, 0, 0, 0.52) 0%,
+    rgba(0, 0, 0, 0.28) 34%,
+    rgba(0, 0, 0, 0.08) 44%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+#company-page.company-selection-page .company-card.cjm .company-card-shade::after {
+  background: linear-gradient(
+    102deg,
+    rgba(109, 24, 25, 0.58) 0%,
+    rgba(152, 32, 33, 0.25) 36%,
+    transparent 50%
+  );
+}
+
+#company-page.company-selection-page .company-card.fedha .company-card-shade::after {
+  background: linear-gradient(
+    102deg,
+    rgba(8, 64, 61, 0.6) 0%,
+    rgba(8, 64, 61, 0.22) 36%,
+    transparent 50%
+  );
+}
+
+#company-page.company-selection-page .company-card.lille .company-card-shade::after {
+  background: linear-gradient(
+    102deg,
+    rgba(160, 40, 70, 0.5) 0%,
+    rgba(241, 119, 147, 0.2) 36%,
+    transparent 50%
+  );
+}
+
+/* Soft highlight along the curve */
+#company-page.company-selection-page .company-card--pill .company-card__pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 46%;
+  width: 0.35rem;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 45%,
+    rgba(255, 255, 255, 0.35) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-8deg);
+  filter: blur(0.5px);
+}
+
+#company-page.company-selection-page .company-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 46%;
+  width: 0.35rem;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 45%,
+    rgba(255, 255, 255, 0.35) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-8deg);
+  filter: blur(0.5px);
+}
+
+#company-page.company-selection-page .company-card--pill::before {
+  display: none;
+}
+
+@media (max-width: 360px) {
+  #company-page.company-selection-page .company-card-cols {
+    width: 54%;
+    max-width: 54%;
+  }
+
+  #company-page.company-selection-page .company-card-col--product {
+    width: 52%;
+    min-width: 8.5rem;
+  }
+
+  #company-page.company-selection-page .company-card::before {
+    left: 44%;
+  }
+}
+ /* Company page â€” compact square portrait cards, three in one row */
+
+#company-page.company-selection-page .company-selection-brands-center:has(.company-selection-brands--vertical) {
+  max-width: min(96%, 29rem);
+}
+
+#company-page.company-selection-page .company-selection-brands.company-selection-brands--vertical {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  flex-direction: unset;
+  gap: clamp(0.45rem, 1.85vw, 0.6rem);
+  width: 100%;
+  max-width: min(100%, 29rem);
+  padding: 8px 0;
+}
+
+#company-page.company-selection-page .company-selection-brands.company-selection-brands--vertical .company-card.company-card--pill {
+  --company-logo-disc: clamp(2.75rem, 12vw, 3.5rem);
+  width: 100%;
+  min-height: 0;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card__pill {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 2.7 / 4;
+  border-radius: 10px;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card-col--product {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  order: 1;
+  flex: 1 1 58%;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  min-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card-col--product .company-card-product {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 84%,
+    86% 93%,
+    50% 100%,
+    14% 93%,
+    0 84%
+  );
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card-col--product .company-card-product-img {
+  object-position: center top;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card.cjm .company-card-col--product {
+  background: #6d1819;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card.fedha .company-card-col--product {
+  background: #08403d;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card.lille .company-card-col--product {
+  background: #dd54799c;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card.cjm .company-card-col--product .company-card-product {
+  background: linear-gradient(180deg, transparent 0%, #6d1819 70%, #982021 100%);
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card.fedha .company-card-col--product .company-card-product {
+  background: linear-gradient(180deg, transparent 0%, #08403d 70%, #0a5652 100%);
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card.lille .company-card-col--product .company-card-product {
+  background: linear-gradient(180deg, transparent 0%, #db2777 70%, #f17793 100%);
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card-cols {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  order: 2;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.28rem;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  flex: 0 0 auto;
+  padding: 0.42rem 0.2rem 0.52rem;
+  box-sizing: border-box;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card--pill .company-card-cols {
+  position: relative;
+  inset: auto;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card-col--text {
+  flex: 0 1 auto;
+  width: 100%;
+  padding: 0;
+  align-items: center;
+  text-align: center;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card--pill .company-card-col--text {
+  align-items: center;
+  text-align: center;
+  padding: 0;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card--pill .company-card-title {
+  text-align: center;
+  font-size: clamp(0.46rem, 1.95vw, 0.56rem) !important;
+  line-height: 1.14;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card--pill.cjm .company-card-title {
+  font-size: clamp(0.5rem, 2.1vw, 0.6rem) !important;
+  letter-spacing: 0.06em;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card--pill .fedha-font-by,
+#company-page.company-selection-page .company-selection-brands--vertical .company-card--pill .lille-font-by {
+  font-size: 0.9em;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card__logo-disc {
+  border-width: 2px;
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card__logo-disc .company-card-logo-wrap {
+  width: calc(var(--company-logo-disc) * 0.88);
+  height: calc(var(--company-logo-disc) * 0.88);
+  min-width: calc(var(--company-logo-disc) * 0.88);
+  min-height: calc(var(--company-logo-disc) * 0.88);
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card-shade {
+  clip-path: polygon(0 58%, 100% 58%, 100% 100%, 0 100%);
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card-shade::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card.cjm .company-card-shade::after {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(109, 24, 25, 0.12) 18%,
+    rgba(109, 24, 25, 0.42) 100%
+  );
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card.fedha .company-card-shade::after {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(8, 64, 61, 0.12) 18%,
+    rgba(8, 64, 61, 0.45) 100%
+  );
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card.lille .company-card-shade::after {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(160, 40, 70, 0.1) 18%,
+    rgba(160, 40, 70, 0.38) 100%
+  );
+}
+
+#company-page.company-selection-page .company-selection-brands--vertical .company-card--pill .company-card__pill::before {
+  display: none;
+}
+
+@media (max-width: 360px) {
+  #company-page.company-selection-page .company-selection-brands.company-selection-brands--vertical {
+    gap: 0.35rem;
+    max-width: min(98%, 24rem);
+  }
+
+  #company-page.company-selection-page .company-selection-brands-center:has(.company-selection-brands--vertical) {
+    max-width: min(98%, 24rem);
+  }
+
+  #company-page.company-selection-page .company-selection-brands.company-selection-brands--vertical .company-card.company-card--pill {
+    --company-logo-disc: clamp(2.4rem, 10.5vw, 3rem);
+  }
+
+  #company-page.company-selection-page .company-selection-brands--vertical .company-card__pill {
+    border-radius: 8px;
+  }
+}
+ /* Company selection page â€” full layout (restored). Overrides legacy rules in public/css/styles.css */
+
+#company-page.company-selection-page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  max-height: 100%;
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+  justify-content: flex-start;
+  align-items: stretch;
+  --company-cards-max-w: min(92%, 20rem);
+  --company-content-w: var(--company-cards-max-w);
+  --company-side-pad: var(--app-page-gutter, 10px);
+  --company-brand-gap: clamp(0.65rem, 4.5vw, 1.1rem);
+  --company-block-gap: clamp(0.3rem, 1dvh, 0.55rem);
+  --company-section-gap: 1rem;
+  --company-promo-gap: clamp(0.2rem, 0.85dvh, 0.38rem);
+  --company-hero-oval-w: clamp(5.75rem, 19dvh, 8.5rem);
+  --company-circle-size: min(
+    clamp(4.75rem, 14dvh, 6.5rem),
+    calc((min(100vw - 2 * var(--company-side-pad), 22rem) - 2 * var(--company-brand-gap)) / 3)
+  );
+  --font-company-trust: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+#company-page.company-selection-page .reg-premium-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+#company-page.company-selection-page .reg-premium-bg.reg-premium-bg--cream {
+  background: #ffffff;
+}
+
+#company-page.company-selection-page .company-selection-shell {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  max-height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  container-type: inline-size;
+  container-name: company-shell;
+}
+
+#company-page.company-selection-page .auth-flow-shell__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+#company-page.company-selection-page .auth-flow-shell__scroll,
+#company-page.company-selection-page .auth-flow-shell__body,
+#company-page.company-selection-page .company-selection-content,
+#company-page.company-selection-page .company-selection-middle {
+  background: #ffffff;
+}
+
+#company-page.company-selection-page .company-selection-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: var(--company-side-pad);
+  padding-right: var(--company-side-pad);
+}
+
+#company-page.company-selection-page .company-selection-top,
+#company-page.company-selection-page .company-selection-tagline,
+#company-page.company-selection-page .company-selection-middle {
+  align-self: stretch;
+  width: 100%;
+}
+
+#company-page.company-selection-page .company-selection-top {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#company-page.company-selection-page .company-selection-top .company-trust-row {
+  align-self: stretch;
+  margin: 20px 0 0px;
+  padding: 0;
+}
+
+#company-page.company-selection-page .company-selection-top .company-rate-strip {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: var(--company-cards-max-w);
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+#company-page.company-selection-page .company-selection-middle {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 0;
+  width: 100%;
+  padding-top: 0;
+}
+
+#company-page.company-selection-page .company-selection-middle .company-about-btn {
+  flex-shrink: 0;
+  margin: clamp(0.65rem, 2vh, 0.95rem) auto clamp(0.35rem, 1.2vh, 0.55rem);
+}
+
+#company-page.company-selection-page .company-selection-middle .company-rate-strip {
+  flex-shrink: 0;
+  width: 100%;
+  margin: 0 0 clamp(0.55rem, 1.6vh, 0.85rem);
+  padding: 0;
+}
+
+#company-page.company-selection-page .company-selection-tagline {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 10px 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: clamp(0.72rem, 3.05vw, 0.86rem);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  text-align: center;
+  color: #6b7280;
+}
+
+#company-page.company-selection-page .company-selection-footer .company-rate-strip {
+  width: 100%;
+  margin-top: 0;
+}
+
+/* â€”â€” Gold / silver rate cards (Thangamayil-style) â€”â€” */
+#company-page.company-selection-page .company-rate-strip {
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+#company-page.company-selection-page .company-rate-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+#company-page.company-selection-page .company-rate-strip__updated {
+  width: 100%;
+  margin: 0.45rem 0 0;
+  padding: 0.42rem 0.65rem;
+  text-align: center;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(0.58rem, 2.45vw, 0.72rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: #3a2a14;
+  background: linear-gradient(90deg, #f0c96a 0%, #f8e8b8 48%, #f0c96a 100%);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+}
+
+#company-page.company-selection-page .company-rate-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 3.75rem;
+  padding: 0.4rem 0.45rem 0.4rem 0.35rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+  box-sizing: border-box;
+}
+
+#company-page.company-selection-page .company-rate-card--gold {
+  background: linear-gradient(155deg, #fff9e8 0%, #f5e6a8 38%, var(--auth-gold, #c9a227) 72%, #fffdf5 100%);
+  border: 1px solid rgba(var(--auth-gold-rgb, 201, 162, 39), 0.28);
+}
+
+#company-page.company-selection-page .company-rate-card--silver {
+  background: linear-gradient(155deg, #f8fafc 0%, #e2e8f0 42%, #cbd5e1 68%, #f9fafb 100%);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+#company-page.company-selection-page .company-rate-card__coin {
+  display: block;
+  width: clamp(1.85rem, 8vw, 2.25rem);
+  height: clamp(1.85rem, 8vw, 2.25rem);
+  object-fit: contain;
+  object-position: center;
+}
+
+#company-page.company-selection-page .company-rate-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
+  gap: 0.08rem;
+}
+
+#company-page.company-selection-page .company-rate-card__label {
+  margin: 0;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: clamp(0.62rem, 2.6vw, 0.72rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #111827;
+}
+
+#company-page.company-selection-page .company-rate-card__value {
+  margin: 0;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: clamp(0.82rem, 3.6vw, 0.98rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #15803d;
+  white-space: nowrap;
+}
+
+#company-page.company-selection-page .company-rate-card__unit {
+  margin: 0;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: clamp(0.52rem, 2.2vw, 0.6rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: #6b7280;
+}
+
+#company-page.company-selection-page .company-page-hero {
+  flex-shrink: 0;
+  width: 100%;
+  padding: 0;
+}
+
+#company-page.company-selection-page .company-page-hero-probe {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#company-page.company-selection-page .company-page-hero-frame {
+  position: relative;
+  width: var(--company-hero-oval-w);
+  max-width: min(12.5rem, 82vw);
+  height: auto;
+  aspect-ratio: 3 / 4;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+
+#company-page.company-selection-page .company-page-hero-photo {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(247, 238, 212, 0.35) 0%,
+      rgba(255, 255, 255, 0) 22%,
+      rgba(255, 255, 255, 0) 72%,
+      rgba(247, 238, 212, 0.45) 100%
+    ),
+    var(--company-hero-photo);
+  background-size: cover;
+  background-position: center 18%;
+  background-repeat: no-repeat;
+}
+
+#company-page.company-selection-page .company-page-hero-fade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse 95% 32% at 50% 0%, rgba(247, 238, 212, 0.9) 0%, rgba(247, 238, 212, 0) 72%),
+    radial-gradient(ellipse 95% 32% at 50% 100%, rgba(247, 238, 212, 0.85) 0%, rgba(247, 238, 212, 0) 72%);
+}
+
+#company-page.company-selection-page .company-selection-header .company-page-brand.cjm-brand-header {
+  margin: 0 auto 0rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+#company-page.company-selection-page .company-selection-header .company-page-brand .cjm-brand-header-logo {
+  width: var(--company-hero-logo-width);
+  margin-bottom: 0;
+}
+
+#company-page.company-selection-page .company-selection-header .company-page-brand .cjm-brand-header-title {
+  font-size: clamp(1.35rem, 5.5vw, 1.75rem);
+}
+
+#company-page.company-selection-page .company-selection-header .company-page-brand .cjm-brand-header-tagline {
+  font-size: clamp(0.65rem, 2.8vw, 0.78rem);
+  margin-top: 0.35rem;
+}
+
+#company-page.company-selection-page .company-selection-header .company-page-brand.cjm-brand-header .cjm-brand-header-title {
+  color: var(--cjm-maroon, #982021);
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.85);
+}
+
+#company-page.company-selection-page .company-selection-header .company-page-brand.cjm-brand-header .cjm-brand-header-tagline {
+  color: var(--cjm-maroon-dark, #6d1819);
+}
+
+#company-page.company-selection-page .company-selection-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+#company-page.company-selection-page .company-selection-body {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  gap: 0;
+}
+
+#company-page.company-selection-page .company-selection-hero-section {
+  flex: 0 0 auto;
+  min-height: 0;
+  width: 100%;
+  max-width: var(--company-content-w);
+  margin: 0 0 var(--company-section-gap, 1rem);
+  padding: 0;
+}
+
+#company-page.company-selection-page .company-selection-copy-section,
+#company-page.company-selection-page .company-selection-footer {
+  flex: 0 1 auto;
+  min-height: 0;
+  width: 100%;
+  max-width: var(--company-content-w);
+  margin: 0 auto;
+  padding: 0;
+}
+
+#company-page.company-selection-page .company-selection-brands-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  min-height: 0;
+  width: 100%;
+  max-width: var(--company-cards-max-w);
+  margin: 10px auto;
+  padding: 10px 0;
+  box-sizing: border-box;
+  align-self: center;
+}
+
+#company-page.company-selection-page .company-selection-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.55rem, 1.4dvh, 0.85rem);
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: auto;
+  padding-top: clamp(1rem, 3vh, 1.5rem);
+}
+
+#company-page.company-selection-page .company-trust-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.35rem, 1.1vh, 0.5rem);
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+#company-page.company-selection-page .company-trust-row__pair {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.85rem, 4vw, 1.35rem);
+  width: 100%;
+  max-width: 100%;
+}
+
+#company-page.company-selection-page .company-trust-divider {
+  display: none;
+}
+
+#company-page.company-selection-page .company-trust-point {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  flex: 0 1 auto;
+  width: auto;
+  max-width: 100%;
+}
+
+#company-page.company-selection-page .company-trust-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cjm-maroon, #982021);
+}
+
+#company-page.company-selection-page .company-trust-icon svg {
+  width: clamp(1rem, 3.8vw, 1.15rem);
+  height: clamp(1rem, 3.8vw, 1.15rem);
+}
+
+#company-page.company-selection-page .company-trust-label {
+  font-family: 'roboto';
+  font-size: clamp(0.62rem, 2.8vw, 0.68rem);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.06em;
+  color: #008143;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+#company-page.company-selection-page .company-promise-top {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem;
+  align-items: stretch;
+}
+
+#company-page.company-selection-page .company-promise-item {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem 0.1rem;
+}
+
+#company-page.company-selection-page .company-promise-stagger-label {
+  margin: 0;
+  width: 100%;
+  max-width: 6.5rem;
+  font-family: Montserrat, system-ui, sans-serif;
+  font-size: clamp(0.62rem, 2.55vw, 0.78rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: #0f3d37;
+  text-transform: none;
+}
+
+#company-page.company-selection-page .company-promise-stagger-label span {
+  display: block;
+}
+
+#company-page.company-selection-page .company-promise-stagger-label span:first-child {
+  padding-left: 0.55rem;
+  text-align: right;
+}
+
+#company-page.company-selection-page .company-promise-stagger-label span:last-child {
+  margin-top: 0.08rem;
+  text-align: left;
+}
+
+#company-page.company-selection-page .company-promise-premium-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: 100%;
+  max-width: 7.25rem;
+  min-height: 3.35rem;
+  padding: 0.45rem 0.35rem 0.5rem;
+  border-radius: 0.35rem;
+  background:
+    radial-gradient(ellipse 90% 80% at 50% 0%, rgba(201, 162, 39, 0.16) 0%, transparent 68%),
+    linear-gradient(165deg, #1a1a1a 0%, #0d0d0d 55%, #141414 100%);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+#company-page.company-selection-page .company-promise-icon--premium {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  color: #d4af37;
+}
+
+#company-page.company-selection-page .company-promise-icon--premium svg {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+#company-page.company-selection-page .company-promise-premium-label {
+  margin: 0;
+  width: 100%;
+  font-family: Montserrat, system-ui, sans-serif;
+  font-size: clamp(0.4rem, 1.65vw, 0.48rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  text-align: center;
+  text-transform: none;
+}
+
+#company-page.company-selection-page .company-promise-premium-label span {
+  display: block;
+}
+
+#company-page.company-selection-page .company-promise-cert-bar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  padding: 0.5rem 0.55rem;
+  border-radius: 0.2rem;
+  background: linear-gradient(180deg, #a32426 0%, #982021 52%, #7f1a1c 100%);
+  box-shadow: 0 4px 14px rgba(152, 32, 33, 0.28);
+}
+
+#company-page.company-selection-page .company-promise-cert-bar--single {
+  grid-template-columns: 1fr;
+}
+
+#company-page.company-selection-page .company-promise-cert-bar--single .company-promise-cert-item {
+  border-right: none;
+}
+
+#company-page.company-selection-page .company-promise-cert-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.38rem;
+  min-width: 0;
+  padding: 0.1rem 0.25rem;
+}
+
+#company-page.company-selection-page .company-promise-cert-item:first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+#company-page.company-selection-page .company-promise-cert-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  color: rgba(220, 220, 220, 0.92);
+}
+
+#company-page.company-selection-page .company-promise-cert-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+#company-page.company-selection-page .company-promise-cert-label {
+  margin: 0;
+  min-width: 0;
+  font-family: var(--font-challani, 'Cinzel', Georgia, serif);
+  font-size: clamp(0.34rem, 1.45vw, 0.42rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0.07em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+#company-page.company-selection-page .company-promise-cert-label span {
+  display: block;
+}
+
+#company-page.company-selection-page .company-promise-cert-item--certified-diamonds .company-promise-cert-label span:last-child,
+#company-page.company-selection-page .company-promise-cert-item--bis-hallmark .company-promise-cert-label span:last-child,
+#company-page.company-selection-page .company-promise-cert-item--transparency .company-promise-cert-label span:last-child {
+  letter-spacing: 0.05em;
+}
+
+#company-page.company-selection-page .company-selection-copy-section {
+  flex: 0 0 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+#company-page.company-selection-page .company-selection-promo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-shrink: 0;
+  min-height: 0;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  gap: var(--company-promo-gap);
+}
+
+#company-page.company-selection-page .company-promo-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  max-width: 14rem;
+  margin: 0;
+  color: #b8862e;
+}
+
+#company-page.company-selection-page .company-promo-eyebrow-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--auth-gold, #c9a227) 50%, transparent 100%);
+  opacity: 0.9;
+}
+
+#company-page.company-selection-page .company-promo-diamond {
+  width: 0.85rem;
+  height: 0.85rem;
+  flex-shrink: 0;
+}
+
+#company-page.company-selection-page .company-promo-kicker {
+  margin: 0;
+  width: 100%;
+  font-family: var(--font-fedha-primary, 'Playfair Display', Georgia, serif);
+  font-size: clamp(0.52rem, 2.15vw, 0.64rem);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  line-height: 1.45;
+  color: #5c4a32;
+  text-transform: none;
+}
+
+#company-page.company-selection-page .company-promo-headline {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: fit-content;
+  max-width: 100%;
+  min-height: clamp(2rem, 8dvh, 2.75rem);
+  margin: clamp(0.35rem, 1.1dvh, 0.55rem) auto;
+  padding: clamp(0.12rem, 0.45dvh, 0.25rem) 0.25rem;
+  align-self: center;
+}
+
+#company-page.company-selection-page .company-promo-shine {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  font-family: var(--font-challani, 'Cinzel', Georgia, serif);
+  font-size: clamp(1.65rem, 7.25dvh, 2.45rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: #a67c2e;
+  text-transform: uppercase;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95),
+    0 3px 14px rgba(166, 124, 46, 0.22);
+}
+
+#company-page.company-selection-page .company-promo-different {
+  position: relative;
+  left: auto;
+  top: auto;
+  z-index: 2;
+  flex: 0 0 auto;
+  margin: 0 0 0.1em -0.05em;
+  transform: rotate(-5deg);
+  font-family: var(--font-lille-script, 'Pinyon Script', cursive);
+  font-size: clamp(1.5rem, 6.5dvh, 2.15rem);
+  font-weight: 400;
+  line-height: 1;
+  color: #0f3d37;
+  white-space: nowrap;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+#company-page.company-selection-page .company-promo-sub {
+  margin: 0;
+  width: 100%;
+  font-family: var(--font-fedha-primary, 'Playfair Display', Georgia, serif);
+  font-size: clamp(0.5rem, 2.05vw, 0.6rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #982021;
+  text-transform: uppercase;
+}
+
+#company-page.company-selection-page .company-promo-banner {
+  margin: clamp(0.35rem, 1dvh, 0.55rem) 0 0;
+  padding: 0 0.15rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+#company-page.company-selection-page .company-promo-banner-ribbon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: min(100%, 19rem);
+  padding: 0.58rem 0.85rem;
+  box-sizing: border-box;
+  transform: rotate(-1deg);
+  background:
+    linear-gradient(
+      118deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      transparent 38%,
+      transparent 62%,
+      rgba(0, 0, 0, 0.12) 100%
+    ),
+    linear-gradient(180deg, #1a5650 0%, #0f3d37 52%, #0a302b 100%);
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+    0 10px 28px rgba(15, 61, 55, 0.28);
+  clip-path: polygon(
+    0 22%,
+    3% 6%,
+    97% 0,
+    100% 20%,
+    100% 78%,
+    97% 94%,
+    3% 100%,
+    0 80%
+  );
+}
+
+#company-page.company-selection-page .company-promo-banner-ribbon::before,
+#company-page.company-selection-page .company-promo-banner-ribbon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 1.75rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.75));
+  pointer-events: none;
+}
+
+#company-page.company-selection-page .company-promo-banner-ribbon::before {
+  left: -1.35rem;
+  transform: translateY(-50%);
+}
+
+#company-page.company-selection-page .company-promo-banner-ribbon::after {
+  right: -1.35rem;
+  transform: translateY(-50%) scaleX(-1);
+}
+
+#company-page.company-selection-page .company-promo-banner-gem {
+  flex-shrink: 0;
+  width: 0.42rem;
+  height: 0.42rem;
+  color: rgba(232, 201, 122, 0.92);
+  opacity: 0.95;
+}
+
+#company-page.company-selection-page .company-promo-banner-gem svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#company-page.company-selection-page .company-promo-banner-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--font-fedha-primary, 'Playfair Display', Georgia, serif);
+  font-size: clamp(0.58rem, 2.35vw, 0.7rem);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  color: #faf6ee;
+  text-align: center;
+  text-transform: none;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.22);
+}
+
+#company-page.company-selection-page .company-about-btn {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0.65rem 2rem;
+  border: none;
+  border-radius: 9999px;
+  background: #fff;
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  color: var(--auth-btn-text, #9d1f21);
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(var(--auth-gold-rgb, 201, 162, 39), 0.28);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#company-page.company-selection-page .company-about-btn:active {
+  transform: scale(0.98);
+}
+
+#company-page.company-selection-page .company-wealth-banner {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: min(96%, 29rem);
+  margin: clamp(0.45rem, 1.4vh, 0.7rem) auto 0;
+   /*padding: clamp(0.8rem, 2.8vw, 1.05rem) clamp(0.7rem, 2.8vw, 0.9rem);
+  border-radius: 0.5rem; */
+  /* background: linear-gradient(180deg, #1e3a5f 0%, #0f2744 100%); */
+  text-align: center;
+  /* box-sizing: border-box; */
+  /* box-shadow: 0 4px 14px rgba(15, 39, 68, 0.22); */
+}
+
+#company-page.company-selection-page .company-wealth-banner__line {
+  margin: 0;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(0.64rem, 2.75vw, 0.8rem);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #841b1c;
+}
+
+#company-page.company-selection-page .company-wealth-banner__line + .company-wealth-banner__line {
+  margin-top: 0.12rem;
+}
+
+#company-page.company-selection-page .company-promo-hashtag {
+  margin: 0;
+  width: 100%;
+  font-family: Montserrat, system-ui, sans-serif;
+  font-size: clamp(0.6rem, 2.4vw, 0.7rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #374151;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+#company-page.company-selection-page .company-selection-brands {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  padding: 10px 0;
+  margin: 0 auto;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: var(--company-cards-max-w);
+  box-sizing: border-box;
+}
+
+/* Pill / maddalam brand cards â€” logo inside pill + themed body + product column */
+#company-page.company-selection-page .company-card.company-card--pill {
+  --company-pill-h: clamp(4.85rem, 16dvh, 8.75rem);
+  --company-logo-disc: min(4.75rem, calc(var(--company-pill-h) - 0.5rem));
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: var(--company-pill-h);
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.2s ease;
+}
+
+#company-page.company-selection-page .company-card.company-card--pill:active {
+  transform: scale(0.985);
+}
+
+#company-page.company-selection-page .company-card.company-card--pill.selected .company-card__pill {
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.72),
+    0 10px 24px rgba(0, 0, 0, 0.18),
+    0 0 18px rgba(201, 162, 39, 0.22);
+}
+
+#company-page.company-selection-page .company-card__logo-disc {
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--company-logo-disc);
+  height: var(--company-logo-disc);
+  margin: 0;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.65);
+  overflow: hidden;
+}
+
+#company-page.company-selection-page .company-card__logo-disc .company-card-logo-wrap {
+  width: calc(var(--company-logo-disc) * 0.8);
+  height: calc(var(--company-logo-disc) * 0.8);
+  min-width: calc(var(--company-logo-disc) * 0.8);
+  min-height: calc(var(--company-logo-disc) * 0.8);
+}
+
+#company-page.company-selection-page .company-card__logo-disc .company-card-logo {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+#company-page.company-selection-page .company-card__pill {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  min-height: var(--company-pill-h);
+  height: var(--company-pill-h);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--cjm-card-elevated-shadow);
+}
+
+#company-page.company-selection-page .company-card.cjm .company-card__pill {
+  background: linear-gradient(118deg, #982021 0%, #6d1819 42%, #982021 100%);
+}
+
+#company-page.company-selection-page .company-card.fedha .company-card__pill {
+  background: linear-gradient(118deg, #08403d 0%, #0a5652 48%, #08403d 100%);
+}
+
+#company-page.company-selection-page .company-card.lille .company-card__pill {
+  background: linear-gradient(118deg, #db2777 0%, #f17793 52%, #fce7f3 100%);
+}
+
+#company-page.company-selection-page .company-card--pill .company-card-title,
+#company-page.company-selection-page .company-card--pill .challani-font,
+#company-page.company-selection-page .company-card--pill .fedha-font-by,
+#company-page.company-selection-page .company-card--pill .lille-font-by {
+  color: #fff !important;
+}
+
+#company-page.company-selection-page .company-card--pill .challani-font {
+  font-family: var(--font-challani, 'Cinzel', Georgia, serif) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+#company-page.company-selection-page .company-card--pill .company-card-title {
+  margin: 0;
+  width: 100%;
+  font-size: clamp(0.76rem, 3.1vw, 0.92rem);
+  line-height: 1.25;
+  text-align: center;
+  color: #fff;
+}
+
+#company-page.company-selection-page .company-card--pill.cjm .company-card-title {
+  font-family: var(--font-challani, 'Cinzel', Georgia, serif) !important;
+  font-size: clamp(0.84rem, 3.5vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+#company-page.company-selection-page .company-card--pill.fedha .company-card-title {
+  font-size: clamp(0.88rem, 3.7vw, 1.02rem);
+  line-height: 1.2;
+}
+
+#company-page.company-selection-page .company-card--pill.lille .company-card-title {
+  font-size: clamp(0.9rem, 3.8vw, 1.04rem);
+  line-height: 1.2;
+}
+
+#company-page.company-selection-page .bottom-indicator {
+  display: none !important;
+}
+
+@media (max-width: 380px) {
+  #company-page.company-selection-page {
+    --company-hero-oval-w: clamp(5.25rem, 17dvh, 7.75rem);
+    --company-circle-size: min(
+      clamp(3.65rem, 11.25dvh, 4.85rem),
+      calc((min(100vw - 2 * var(--company-side-pad), 22rem) - 2 * var(--company-brand-gap)) / 3)
+    );
+    --company-section-gap: 0.85rem;
+    --company-block-gap: clamp(0.28rem, 0.95dvh, 0.5rem);
+  }
+
+  #company-page.company-selection-page .company-selection-brands {
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  #company-page.company-selection-page .company-card.company-card--pill {
+    --company-pill-h: clamp(4.35rem, 14.5dvh, 5.35rem);
+    --company-logo-disc: min(4rem, calc(var(--company-pill-h) - 0.45rem));
+  }
+}
+
+@media (max-height: 740px) {
+  #company-page.company-selection-page {
+    --company-hero-oval-w: clamp(5rem, 16dvh, 7.25rem);
+    --company-circle-size: min(
+      clamp(3.45rem, 10.75dvh, 4.6rem),
+      calc((min(100vw - 2 * var(--company-side-pad), 22rem) - 2 * var(--company-brand-gap)) / 3)
+    );
+    --company-section-gap: 0.8rem;
+    --company-block-gap: clamp(0.25rem, 0.9dvh, 0.45rem);
+  }
+
+  #company-page.company-selection-page .company-selection-header .company-page-brand .cjm-brand-header-logo {
+    width: var(--company-hero-logo-width-md);
+  }
+
+  #company-page.company-selection-page .company-selection-header .company-page-brand .cjm-brand-header-title {
+    font-size: clamp(1.1rem, 4dvh, 1.4rem);
+  }
+
+  #company-page.company-selection-page .company-promo-headline {
+    min-height: clamp(1.65rem, 6.5dvh, 2.2rem);
+  }
+
+  #company-page.company-selection-page .company-promo-shine {
+    font-size: clamp(1.35rem, 5.5dvh, 1.85rem);
+  }
+
+  #company-page.company-selection-page .company-promo-different {
+    font-size: clamp(1.15rem, 4.8dvh, 1.55rem);
+  }
+
+  #company-page.company-selection-page .company-selection-brands-center {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  #company-page.company-selection-page .company-selection-footer {
+    padding-top: clamp(0.4rem, 1.1dvh, 0.65rem);
+  }
+
+  #company-page.company-selection-page .company-promise-strip {
+    gap: 0.38rem;
+    padding: 0.4rem 0.08rem 0.3rem;
+  }
+
+  #company-page.company-selection-page .company-promise-top {
+    gap: 0.32rem;
+  }
+
+  #company-page.company-selection-page .company-promise-stagger-label {
+    font-size: clamp(0.56rem, 2.35vw, 0.68rem);
+  }
+
+  #company-page.company-selection-page .company-promise-premium-card {
+    min-height: 3rem;
+    max-width: 6.75rem;
+  }
+
+  #company-page.company-selection-page .company-promise-cert-bar {
+    padding: 0.42rem 0.4rem;
+  }
+
+  #company-page.company-selection-page .company-promise-cert-label {
+    font-size: clamp(0.3rem, 1.35vw, 0.38rem);
+  }
+}
+
+@media (max-height: 640px) {
+  #company-page.company-selection-page {
+    --company-hero-oval-w: clamp(4.5rem, 14dvh, 6.75rem);
+    --company-circle-size: min(
+      clamp(3.15rem, 9.75dvh, 4.15rem),
+      calc((min(100vw - 2 * var(--company-side-pad), 22rem) - 2 * var(--company-brand-gap)) / 3)
+    );
+    --company-section-gap: 0.75rem;
+    --company-block-gap: clamp(0.22rem, 0.75dvh, 0.4rem);
+  }
+
+  #company-page.company-selection-page .company-selection-header .company-page-brand .cjm-brand-header-logo {
+    width: var(--company-hero-logo-width-sm);
+  }
+
+  #company-page.company-selection-page .company-selection-promo {
+    gap: clamp(0.12rem, 0.45dvh, 0.25rem);
+  }
+
+  #company-page.company-selection-page .company-promo-banner-ribbon {
+    width: min(100%, 17.5rem);
+    padding: 0.5rem 0.7rem;
+    gap: 0.35rem;
+  }
+
+  #company-page.company-selection-page .company-promo-banner-text {
+    font-size: clamp(0.52rem, 2.1vw, 0.62rem);
+  }
+
+  #company-page.company-selection-page .company-promo-banner-ribbon::before,
+  #company-page.company-selection-page .company-promo-banner-ribbon::after {
+    width: 1.25rem;
+  }
+
+  #company-page.company-selection-page .company-promo-banner-ribbon::before {
+    left: -1rem;
+  }
+
+  #company-page.company-selection-page .company-promo-banner-ribbon::after {
+    right: -1rem;
+  }
+}
+
+/* Footer quick actions â†’ brand-footer-actions.css */
+ /* After brand header finishes â€” reveal card, footer, back, company list */
+
+@keyframes cjm-sequence-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Auth pages: login, register, MPIN, forgot */
+.auth-premium-page:not(.auth-premium-content-ready) .reg-premium-back,
+.auth-premium-page:not(.auth-premium-content-ready) .reg-premium-back--below-card,
+.auth-premium-page:not(.auth-premium-content-ready) .reg-premium-card,
+.auth-premium-page:not(.auth-premium-content-ready) .reg-premium-footer-link {
+  opacity: 0;
+  transform: translateY(20px) scale(0.97);
+  pointer-events: none;
+}
+
+.auth-premium-page.auth-premium-content-ready .reg-premium-back:not(.reg-premium-back--below-card) {
+  animation: cjm-sequence-content-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards;
+  pointer-events: auto;
+}
+
+.auth-premium-page.auth-premium-content-ready .reg-premium-card {
+  animation: cjm-sequence-content-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards;
+  pointer-events: auto;
+}
+
+.auth-premium-page.auth-premium-content-ready .reg-premium-back--below-card {
+  animation: cjm-sequence-content-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.14s forwards;
+  pointer-events: auto;
+}
+
+.auth-premium-page.auth-premium-content-ready .reg-premium-footer-link {
+  animation: cjm-sequence-content-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.14s forwards;
+  pointer-events: auto;
+}
+
+/* Company page: hero, brand cards, then promo text */
+.company-selection-page:not(.company-content-ready) .company-page-hero,
+.company-selection-page:not(.company-content-ready) .company-selection-promo,
+.company-selection-page:not(.company-content-ready) .company-about-btn,
+.company-selection-page:not(.company-content-ready) .company-rate-strip,
+.company-selection-page:not(.company-content-ready) .company-trust-row,
+.company-selection-page:not(.company-content-ready) .company-selection-brands .company-card {
+  opacity: 0;
+  transform: translateY(18px) scale(0.98);
+  pointer-events: none;
+}
+
+.company-selection-page.company-content-ready .company-page-hero {
+  animation: cjm-sequence-content-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.04s forwards;
+}
+
+.company-selection-page.company-content-ready .company-selection-brands .company-card {
+  animation: cjm-sequence-content-in 0.52s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  pointer-events: auto;
+}
+
+.company-selection-page.company-content-ready .company-selection-brands .company-card:nth-child(1) {
+  animation-delay: 0.18s;
+}
+
+.company-selection-page.company-content-ready .company-selection-brands .company-card:nth-child(2) {
+  animation-delay: 0.26s;
+}
+
+.company-selection-page.company-content-ready .company-selection-brands .company-card:nth-child(3) {
+  animation-delay: 0.34s;
+}
+
+.company-selection-page.company-content-ready .company-selection-promo {
+  animation: cjm-sequence-content-in 0.48s cubic-bezier(0.22, 1, 0.36, 1) 0.42s forwards;
+  pointer-events: auto;
+}
+
+.company-selection-page.company-content-ready .company-about-btn {
+  animation: cjm-sequence-content-in 0.48s cubic-bezier(0.22, 1, 0.36, 1) 0.42s forwards;
+  pointer-events: auto;
+}
+
+.company-selection-page.company-content-ready .company-rate-strip {
+  animation: cjm-sequence-content-in 0.48s cubic-bezier(0.22, 1, 0.36, 1) 0.48s forwards;
+  pointer-events: auto;
+}
+
+.company-selection-page.company-content-ready .company-trust-row {
+  animation: cjm-sequence-content-in 0.48s cubic-bezier(0.22, 1, 0.36, 1) 0.54s forwards;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-premium-page .reg-premium-back,
+  .auth-premium-page .reg-premium-back--below-card,
+  .auth-premium-page .reg-premium-card,
+  .auth-premium-page .reg-premium-footer-link,
+  .company-selection-page .company-selection-promo,
+  .company-selection-page .company-about-btn,
+  .company-selection-page .company-rate-strip,
+  .company-selection-page .company-trust-row,
+  .company-selection-page .company-page-hero,
+  .company-selection-page .company-card {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    pointer-events: auto !important;
+  }
+}
+
