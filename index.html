@@ -225,7 +225,7 @@
       </div>
     </div>
   </div>
-  <script>
+ <script>
   document.addEventListener("DOMContentLoaded", function () {
     const merchantCards = document.querySelectorAll(
       ".company-card[data-merchant-code]"
@@ -233,6 +233,8 @@
 
     function selectMerchant(card) {
       const merchantCode = card.dataset.merchantCode;
+
+      console.log("Selected merchant code:", merchantCode);
 
       if (!merchantCode) {
         console.error("Merchant code is missing.");
@@ -247,11 +249,13 @@
         window.MerchantSelection &&
         typeof window.MerchantSelection.postMessage === "function"
       ) {
-        window.MerchantSelection.postMessage(merchantCode);
+        window.MerchantSelection.postMessage(
+          merchantCode.toString().trim()
+        );
       } else {
         console.error(merchantCode);
         console.error(
-          "MerchantSelection Flutter channel is not available"
+          "MerchantSelection Flutter channel is unavailable."
         );
       }
     }
