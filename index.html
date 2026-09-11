@@ -1,295 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Select company — Challani</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="company-selection.css" />
+  </head>
+  <body>
+    <div id="company-page" class="company-selection-page">
+      <svg class="company-page-header__clip-defs" aria-hidden="true">
+        <defs>
+          <clipPath id="companyHeaderCurveClip" clipPathUnits="objectBoundingBox">
+            <path d="M0,0 H1 V0.88 C0.75,1.02 0.25,1.02 0,0.88 Z" />
+          </clipPath>
+          <linearGradient id="companyHeaderCurveGoldGrad" gradientUnits="userSpaceOnUse" x1="0" y1="88" x2="36" y2="88">
+            <stop offset="0%" stop-color="#b89440" stop-opacity="0.04" />
+            <stop offset="35%" stop-color="#e0c060" stop-opacity="0.5" />
+            <stop offset="50%" stop-color="#fff6d6" stop-opacity="0.95" />
+            <stop offset="65%" stop-color="#c9a227" stop-opacity="0.5" />
+            <stop offset="100%" stop-color="#b89440" stop-opacity="0.04" />
+            <animate attributeName="x1" values="-40;100" dur="3.6s" repeatCount="indefinite" />
+            <animate attributeName="x2" values="0;140" dur="3.6s" repeatCount="indefinite" />
+          </linearGradient>
+          <filter id="companyHeaderCurveGoldBlur" x="-15%" y="-120%" width="130%" height="340%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="0.7" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+      </svg>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Challani — Choose Your Brand</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-
-<body>
-  <div id="company-page"
-    class="page active auth-premium-page company-selection-page company-content-ready login-premium-page">
-    <div class="reg-premium-bg reg-premium-bg--cream" aria-hidden="true"></div>
-
-    <div class="reg-premium-inner">
-      <div class="sign-in-shell company-selection-shell">
-        <!-- CJM Hero Header -->
-        <div class="cjm-auth-header-shell">
-          <header class="auth-page-header auth-page-header--hero cjm-auth-header">
-            <svg class="auth-page-header__clip-def" width="0" height="0" aria-hidden="true" focusable="false">
-              <defs>
-                <clipPath id="hero-clip" clipPathUnits="objectBoundingBox">
-                  <path
-                    d="M0,0 H1 V0.62 C0.94,0.84 0.82,0.58 0.7,0.78 C0.58,0.52 0.42,0.82 0.28,0.68 C0.16,0.56 0.08,0.64 0,0.7 Z" />
-                </clipPath>
-              </defs>
-            </svg>
-
-            <div class="auth-page-header__hero-panel" aria-hidden="true"
-              style="clip-path: url(#hero-clip); -webkit-clip-path: url(#hero-clip);">
-              <div class="auth-page-header__hero-jewellery">
-                <img src="images/cjm_img_header.png" alt=""
-                  class="auth-page-header__hero-jewellery-piece auth-page-header__hero-jewellery-piece--ornament"
-                  decoding="async" />
-              </div>
-            </div>
-
-            <div class="auth-page-header__inner auth-page-header__inner--hero">
-              <div class="auth-page-header__hero-start">
-                <div class="auth-page-header__brand">
-                  <img src="images/logos/without bg/challani_logo.png" alt="Challani" class="auth-page-header__logo"
-                    decoding="async" />
-                </div>
-              </div>
-            </div>
-
-            <svg class="auth-page-header__hero-wave" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"
-              focusable="false">
-              <path
-                d="M0,0.7 C0.08,0.64 0.16,0.56 0.28,0.68 C0.42,0.82 0.58,0.52 0.7,0.78 C0.82,0.58 0.94,0.84 1,0.62 V1 H0 Z"
-                fill="#ffffff" />
-            </svg>
-          </header>
+      <header class="company-page-header">
+        <div class="company-page-header__panel">
+          <div class="company-page-header__media">
+            <img class="company-page-header__media-img" src="assets/company_header_cjm.png" alt="bgimage" data-fallback="" />
+            <span class="company-page-header__silk-sheen"></span>
+            <span class="company-page-header__glass-fade"></span>
+          </div>
         </div>
 
-        <div class="auth-flow-shell__scroll">
-          <div class="auth-flow-shell__body">
-            <div class="company-selection-content">
-              <!-- Top: rates + trust strip -->
-              <div class="company-selection-top">
-                <section class="company-rate-strip" aria-label="Today's gold and silver rates">
-                  <div class="company-rate-cards">
-                    <article class="company-rate-card company-rate-card--gold" aria-label="Gold Rate ₹14,480">
-                      <img src="images/gold_coin.png" alt="" class="company-rate-card__coin" decoding="async" />
-                      <div class="company-rate-card__body">
-                        <p class="company-rate-card__label">Gold Rate</p>
-                        <p class="company-rate-card__value">₹14,480</p>
-                        <p class="company-rate-card__unit">22K Per gram</p>
-                      </div>
-                    </article>
-                    <article class="company-rate-card company-rate-card--silver" aria-label="Silver Rate ₹285.00">
-                      <img src="images/silver_coin.png" alt="" class="company-rate-card__coin" decoding="async" />
-                      <div class="company-rate-card__body">
-                        <p class="company-rate-card__label">Silver Rate</p>
-                        <p class="company-rate-card__value">₹285.00</p>
-                        <p class="company-rate-card__unit">Per gram</p>
-                      </div>
-                    </article>
-                  </div>
-                  <p class="company-rate-strip__updated" aria-live="polite">
-                    Rate updated on 31 Aug 2026, 10:15 AM
-                  </p>
-                </section>
+        <svg class="company-page-header__curve-glow" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <path class="company-page-header__curve-glow-base" d="M0,88 C25,102 75,102 100,88" fill="none" />
+          <path class="company-page-header__curve-glow-shine" d="M0,88 C25,102 75,102 100,88" fill="none" stroke="url(#companyHeaderCurveGoldGrad)" filter="url(#companyHeaderCurveGoldBlur)" />
+        </svg>
 
-                <section class="company-trust-row" aria-label="Challani quality and trust">
-                  <div class="company-trust-row__pair">
-                    <div class="company-trust-point">
-                      <span class="company-trust-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35"
-                          stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M12 3.5L19.5 10 12 20.5 4.5 10 12 3.5Z" />
-                          <path d="M12 7.5L8.5 10 12 16.5 15.5 10 12 7.5Z" />
-                        </svg>
-                      </span>
-                      <span class="company-trust-label">Certified Diamonds</span>
-                    </div>
-                    <div class="company-trust-point">
-                      <span class="company-trust-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35"
-                          stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M12 3.5L20.5 18.5H3.5L12 3.5Z" />
-                          <circle cx="12" cy="13.5" r="2.35" />
-                        </svg>
-                      </span>
-                      <span class="company-trust-label">BIS Hallmark</span>
-                    </div>
-                  </div>
-                  <div class="company-trust-point">
-                    <span class="company-trust-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="3.25" />
-                        <path d="M12 3C7 6 4 9 4 12s3 6 8 9c5-3 8-6 8-9s-3-6-8-9z" />
-                      </svg>
-                    </span>
-                    <span class="company-trust-label">Complete Transparency</span>
-                  </div>
-                </section>
+        <div class="company-page-header__brand">
+          <img class="company-page-header__logo" src="assets/challani_logo.png" alt="Challani" />
+        </div>
+
+        <div class="company-page-header__earring-badge" aria-hidden="true">
+          <span class="company-page-header__earring-glow"></span>
+          <span class="company-page-header__earring-ring"></span>
+          <div class="company-page-header__earring-disc">
+            <img class="company-page-header__earring-img" src="assets/company_header2.png" alt="logo" />
+          </div>
+        </div>
+
+        <div class="company-page-header__settings">
+          <div class="company-selection-settings" id="settingsRoot">
+            <button type="button" class="company-selection-settings__trigger" id="settingsBtn" aria-label="Account settings" aria-expanded="false">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="1.75" />
+                <path d="M19.4 13a7.8 7.8 0 0 0 .05-2l2.05-1.55-2-3.46-2.45.9a7.7 7.7 0 0 0-1.75-1L14.9 3h-5.8l-.4 2.89a7.7 7.7 0 0 0-1.75 1l-2.45-.9-2 3.46L4.55 11a7.8 7.8 0 0 0 0 2l-2.05 1.55 2 3.46 2.45-.9a7.7 7.7 0 0 0 1.75 1L9.1 21h5.8l.4-2.89a7.7 7.7 0 0 0 1.75-1l2.45.9 2-3.46L19.4 13Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="company-selection-settings__panel" id="settingsPanel" hidden>
+              <div class="company-selection-settings__user">
+                <p class="company-selection-settings__name">User</p>
+                <p class="company-selection-settings__phone">—</p>
               </div>
-
-              <p class="company-selection-tagline">
-                Pick a brand to explore plans, schemes &amp; Digi Gold
-              </p>
-
-              <!-- Brand cards -->
-              <section class="company-selection-brands-center" aria-label="Choose a brand">
-                <div class="company-selection-brands company-selection-brands--vertical" role="list">
-                  <!-- CJM -->
-                  <div class="company-card company-card--pill cjm" role="listitem button" tabindex="0"
-                    aria-label="CHALLANI JEWELLERY MART" data-merchant-code="12885">
-                    <div class="company-card__pill">
-                      <div class="company-card-shade" aria-hidden="true"></div>
-                      <div class="company-card-cols">
-                        <div class="company-card__logo-disc">
-                          <div class="company-card-logo-wrap">
-                            <img src="images/logos/without bg/challani_logo.png" alt="Challani Jewellery Mart logo"
-                              class="company-card-logo" />
-                          </div>
-                        </div>
-                        <div class="company-card-col--text">
-                          <p class="company-card-title challani-font">CHALLANI</p>
-                        </div>
-                      </div>
-                      <div class="company-card-col--product">
-                        <div class="company-card-product">
-                          <img src="images/ad1.jpg" alt="" class="company-card-product-img" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Fedha -->
-                  <div class="company-card company-card--pill fedha" role="listitem button" tabindex="0"
-                    aria-label="Fedha by CHALLANI" data-merchant-code="12883">
-                    <div class="company-card__pill">
-                      <div class="company-card-shade" aria-hidden="true"></div>
-                      <div class="company-card-cols">
-                        <div class="company-card__logo-disc">
-                          <div class="company-card-logo-wrap">
-                            <img src="images/logos/without bg/fedha_logo.png" alt="Fedha logo"
-                              class="company-card-logo" />
-                          </div>
-                        </div>
-                        <div class="company-card-col--text">
-                          <p class="company-card-title fedha-font-primary">
-                            Fedha <span class="fedha-font-by">by</span>
-                            <span class="challani-font">CHALLANI</span>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="company-card-col--product">
-                        <div class="company-card-product">
-                          <img src="images/fedha-img2.jpeg" alt="" class="company-card-product-img" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Lille -->
-                  <div class="company-card company-card--pill lille" role="listitem button" tabindex="0"
-                    aria-label="Lille By CHALLANI" data-merchant-code="12884">
-                    <div class="company-card__pill">
-                      <div class="company-card-shade" aria-hidden="true"></div>
-                      <div class="company-card-cols">
-                        <div class="company-card__logo-disc">
-                          <div class="company-card-logo-wrap">
-                            <img src="images/logos/without bg/lille_logo.png" alt="Lille logo"
-                              class="company-card-logo" />
-                          </div>
-                        </div>
-                        <div class="company-card-col--text">
-                          <p class="company-card-title lille-font-primary">
-                            Lille <span class="lille-font-by">by</span>
-                            <span class="challani-font">CHALLANI</span>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="company-card-col--product">
-                        <div class="company-card-product">
-                          <img src="images/lille_banner_img1.webp" alt="" class="company-card-product-img" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <!-- Bottom: About + wealth banner -->
-              <div class="company-selection-middle">
-                <button type="button" class="company-about-btn">About Us</button>
-                <div class="company-wealth-banner" role="note" aria-label="Start your wealth journey by just 3 clicks">
-                  <p class="company-wealth-banner__line">Start your wealth journey</p>
-                  <p class="company-wealth-banner__line">by just 3 clicks</p>
-                </div>
+              <div class="company-selection-settings__actions">
+                <button type="button" data-settings-action="mpin">Change MPIN</button>
+                <button type="button" data-settings-action="logout">Logout</button>
               </div>
             </div>
           </div>
         </div>
-      </div>
+
+        <div class="company-page-header__brand-overlay">
+          <div class="company-brand-cluster company-brand-cluster--diamonds-only">
+            <div class="company-brand-cluster__diamonds" role="list">
+              <button type="button" class="company-brand-cluster__diamond company-brand-cluster__diamond--cjm is-active" data-brand="cjm" data-merchant-code="12885" role="listitem" aria-label="CHALLANI JEWELLERY MART" aria-pressed="true">
+                <span class="company-brand-cluster__diamond-face">
+                  <span class="company-card-logo-wrap">
+                    <img class="company-card-logo" src="assets/challani_logo.png" alt="challini" />
+                  </span>
+                </span>
+              </button>
+              <button type="button" class="company-brand-cluster__diamond company-brand-cluster__diamond--fedha" data-brand="fedha" data-merchant-code="12883" role="listitem" aria-label="Fedha by CHALLANI" aria-pressed="false">
+                <span class="company-brand-cluster__diamond-face">
+                  <span class="company-card-logo-wrap">
+                    <img class="company-card-logo" src="assets/fedha_logo.png" alt="fedha" />
+                  </span>
+                </span>
+              </button>
+              <button type="button" class="company-brand-cluster__diamond company-brand-cluster__diamond--lille" data-brand="lille" data-merchant-code="12884" role="listitem" aria-label="Lille By CHALLANI" aria-pressed="false">
+                <span class="company-brand-cluster__diamond-face">
+                  <span class="company-card-logo-wrap">
+                    <img class="company-card-logo" src="assets/lille_logo.png" alt="lille" />
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="company-selection-content">
+        <section class="company-brand-cluster company-brand-cluster--panel-only" aria-label="Choose a brand">
+          <div class="company-brand-cluster__stage company-brand-cluster__stage--panel-only">
+            <div class="company-brand-cluster__diamonds-spacer" aria-hidden="true"></div>
+            <div class="company-brand-cluster__side-actions">
+              <button type="button" class="company-about-btn company-brand-cluster__about" id="aboutBtn">About Us</button>
+              <p class="company-brand-cluster__hint">· Plans · Schemes<br />· Digi Gold</p>
+            </div>
+          </div>
+          <p class="company-selection-tagline company-brand-cluster__tagline">
+            <span>Tap a logo to open that brand</span>
+          </p>
+        </section>
+
+        <div class="company-selection-middle">
+          <div class="company-brand-cluster__rates-card" aria-label="Today's gold and silver rates">
+            <p class="company-brand-cluster__rate company-brand-cluster__rate--gold">
+              <span class="company-brand-cluster__rate-label">Gold</span>
+              <span class="company-brand-cluster__rate-value">₹14,480</span>
+              <span class="company-brand-cluster__rate-unit">22K/g</span>
+            </p>
+            <p class="company-brand-cluster__rate company-brand-cluster__rate--silver">
+              <span class="company-brand-cluster__rate-label">Silver</span>
+              <span class="company-brand-cluster__rate-value">₹285</span>
+            </p>
+          </div>
+
+          <section class="company-trust-ribbon" aria-label="Challani quality and trust">
+            <ul class="company-trust-ribbon__list">
+              <li class="company-trust-ribbon__item">
+                <span class="company-trust-ribbon__icon"><img src="assets/certified_diamond_logo.png" alt="certified" /></span>
+                <span class="company-trust-ribbon__spacer"></span>
+                <span class="company-trust-ribbon__label"><span>Certified</span><span>Diamonds</span></span>
+              </li>
+              <li class="company-trust-ribbon__item">
+                <span class="company-trust-ribbon__icon"><img src="assets/bis_halmark_logo.png" alt="hallmark" /></span>
+                <span class="company-trust-ribbon__spacer"></span>
+                <span class="company-trust-ribbon__label"><span>BIS</span><span>Hallmark</span></span>
+              </li>
+              <li class="company-trust-ribbon__item">
+                <span class="company-trust-ribbon__icon"><img src="assets/complete_transparency.png" alt="transparency" /></span>
+                <span class="company-trust-ribbon__spacer"></span>
+                <span class="company-trust-ribbon__label"><span>Complete</span><span>Transparency</span></span>
+              </li>
+            </ul>
+          </section>
+
+          <div class="company-wealth-banner" role="note">
+            <p class="company-wealth-banner__line">Start your wealth journey</p>
+            <p class="company-wealth-banner__line">by just 3 clicks</p>
+          </div>
+
+          <div class="company-social-links">
+            <a class="company-social-links__web" href="https://www.challanijewels.com/" target="_blank" rel="noopener noreferrer">www.challanijewels.com</a>
+            <div class="company-social-links__icons">
+              <a class="company-social-links__icon company-social-links__icon--ig" href="https://www.instagram.com/challani_jewellery" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.241 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.241-1.308-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.974-.974 2.241-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0 3.838a6 6 0 100 12 6 6 0 000-12zm0 1.8a4.2 4.2 0 110 8.4 4.2 4.2 0 010-8.4zm6.406-3.845a1.44 1.44 0 11-.001 2.881 1.44 1.44 0 01.001-2.881z"/></svg>
+              </a>
+              <a class="company-social-links__icon company-social-links__icon--fb" href="https://www.facebook.com/ChallaniJewelleryMart/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
-  </div>
- <script>
-  // Wait until the complete HTML structure is available.
-  document.addEventListener("DOMContentLoaded", function () {
 
-    // Find every merchant card containing a merchant code.
-    const merchantCards = document.querySelectorAll(
-      ".company-card[data-merchant-code]"
-    );
+    <dialog class="about-dialog" id="aboutDialog">
+      <h2>About Us</h2>
+      <p>The Challani family brings together trusted jewellery brands — Challani Jewellery Mart, Fedha, and Lille — offering gold, silver, and diamond collections with craftsmanship and care across South India.</p>
+      <button type="button" id="aboutClose">Close</button>
+    </dialog>
 
-    // Send the selected card's merchant code to Flutter.
-    function selectMerchant(card) {
-
-      // Read the merchant code from the card.
-      const merchantCode = card.dataset.merchantCode;
-
-      // Stop when the card does not contain a merchant code.
-      if (!merchantCode) {
-        console.error("Merchant code is missing.");
-        return;
-      }
-
-      // Remove unwanted spaces from the merchant code.
-      const normalizedMerchantCode = merchantCode.toString().trim();
-
-      // Display the selected code in the browser console.
-      console.log(
-        "Selected merchant code:",
-        normalizedMerchantCode
-      );
-
-      // Check whether the Flutter Toaster channel is available.
-      if (
-        window.Toaster &&
-        typeof window.Toaster.postMessage === "function"
-      ) {
-        // Send the selected merchant code to Flutter.
-        window.Toaster.postMessage(normalizedMerchantCode);
-        return;
-      }
-
-      // Log an error when the page is not opened inside Flutter.
-      console.error(
-        "Toaster Flutter channel is unavailable."
-      );
-    }
-
-    // Register navigation events for every merchant card.
-    merchantCards.forEach(function (card) {
-
-      // Handle merchant selection through mouse or touch.
-      card.addEventListener("click", function () {
-        selectMerchant(card);
-      });
-
-      // Handle merchant selection through the keyboard.
-      card.addEventListener("keydown", function (event) {
-
-        // Allow selection using Enter or Space.
-        if (event.key === "Enter" || event.key === " ") {
-
-          // Prevent Space from scrolling the webpage.
-          event.preventDefault();
-
-          // Send the keyboard-selected merchant to Flutter.
-          selectMerchant(card);
-        }
-      });
-    });
-  });
-</script>
-</body>
-
+    <div id="pickedToast" class="picked-toast" hidden></div>
+    <script src="company-selection.js"></script>
+  </body>
 </html>
