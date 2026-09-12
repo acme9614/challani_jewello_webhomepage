@@ -93,13 +93,14 @@
     });
   }
 
-  if (settingsBtn && settingsPanel) {
-    settingsBtn.addEventListener('click', function () {
-      var open = settingsPanel.hidden;
-      settingsPanel.hidden = !open;
-      settingsBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  }
+  // Commented because the Settings icon now opens the Flutter Settings page.
+  // if (settingsBtn && settingsPanel) {
+  //   settingsBtn.addEventListener('click', function () {
+  //     var open = settingsPanel.hidden;
+  //     settingsPanel.hidden = !open;
+  //     settingsBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  //   });
+  // }
 
   document.addEventListener('mousedown', function (event) {
     if (!settingsRoot || !settingsPanel || settingsPanel.hidden) return;
@@ -179,3 +180,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+
+// setting page navigation logic-
+
+// Finds the Settings icon displayed on the HTML homepage.
+const settingsButton = document.getElementById("settingsBtn");
+
+// Adds Flutter Settings navigation to the HTML Settings icon.
+if (settingsButton) {
+  settingsButton.addEventListener("click", function (event) {
+    // Prevents the button's default browser action.
+    event.preventDefault();
+
+    // Checks whether the Flutter Toaster channel is available.
+    if (
+      window.Toaster &&
+      typeof window.Toaster.postMessage === "function"
+    ) {
+      // Requests Flutter to open the existing Settings page.
+      window.Toaster.postMessage("navigateToSetting");
+      return;
+    }
+
+    // Reports when the webpage is not opened inside the Flutter WebView.
+    console.error("Toaster Flutter channel is unavailable.");
+  });
+}
