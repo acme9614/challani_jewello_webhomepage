@@ -207,3 +207,46 @@ if (settingsButton) {
     console.error("Toaster Flutter channel is unavailable.");
   });
 }
+
+ // Added By Ajit Mane RF IF #250218: Listens for the complete rate response dispatched by the Flutter WebView.
+      window.addEventListener("rateDetailsUpdated", function (event) {
+        // Added By Ajit Mane RF IF #250218: Prints the complete Flutter response in the HTML console.
+        console.log("========================================");
+        console.log("Rate response received from Flutter:", event.detail);
+
+        // Added By Ajit Mane RF IF #250218: Prints readable JSON for response verification.
+        try {
+          console.log(
+            "Formatted rate response:",
+            JSON.stringify(event.detail, null, 2)
+          );
+        } catch (error) {
+          console.error("Unable to format rate response:", error);
+        }
+
+        // Added By Ajit Mane RF IF #250218: Prints the Flutter error when rate loading fails.
+        if (event.detail && event.detail.hasError === true) {
+          console.error(
+            "Flutter rate error:",
+            event.detail.error || "Unable to load rate details."
+          );
+          return;
+        }
+
+        // Added By Ajit Mane RF IF #250218: Reads and prints every rate record returned by Flutter.
+        var rateList =
+          event.detail && Array.isArray(event.detail.data)
+            ? event.detail.data
+            : [];
+
+        console.log("Complete rate list:", rateList);
+        console.log("Total rate records:", rateList.length);
+
+        if (rateList.length > 0) {
+          console.table(rateList);
+        } else {
+          console.warn("No rate records received from Flutter.");
+        }
+
+        console.log("========================================");
+      });
