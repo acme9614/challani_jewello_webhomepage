@@ -126,7 +126,7 @@
         </section>
 
         <div class="company-selection-middle">
-          <div class="company-brand-cluster__rates-card" aria-label="Today's gold and silver rates">
+          <!-- <div class="company-brand-cluster__rates-card" aria-label="Today's gold and silver rates">
             <p class="company-brand-cluster__rate company-brand-cluster__rate--gold">
               <span class="company-brand-cluster__rate-label">Gold</span>
               <span class="company-brand-cluster__rate-value">₹14,480</span>
@@ -135,6 +135,65 @@
             <p class="company-brand-cluster__rate company-brand-cluster__rate--silver">
               <span class="company-brand-cluster__rate-label">Silver</span>
               <span class="company-brand-cluster__rate-value">₹285</span>
+            </p>
+          </div> -->
+
+          <!-- Added By Ajit Mane RF IF #248239: Shows only the loading indicator while waiting for Flutter response. -->
+          <div
+            id="metalRatesLoader"
+            class="company-brand-cluster__rates-loader"
+            role="status"
+            aria-label="Loading today's rates"
+          >
+            <span
+              class="company-brand-cluster__rates-spinner"
+              aria-hidden="true"
+            ></span>
+          </div>
+
+          <!-- Added By Ajit Mane RF IF #248239: Remains hidden until valid Gold or Silver data is received. -->
+          <div
+            id="metalRatesCard"
+            class="company-brand-cluster__rates-card"
+            aria-label="Today's gold and silver rates"
+            hidden
+          >
+            <!-- Added By Ajit Mane RF IF #248239: Displays Gold only for valid metalType 1 data. -->
+            <p
+              id="goldRateSection"
+              class="company-brand-cluster__rate company-brand-cluster__rate--gold"
+              hidden
+            >
+              <span class="company-brand-cluster__rate-label">Gold</span>
+
+              <span
+                id="goldRateValue"
+                class="company-brand-cluster__rate-value"
+              ></span>
+
+              <span
+                id="goldRateUnit"
+                class="company-brand-cluster__rate-unit"
+              ></span>
+            </p>
+
+            <!-- Added By Ajit Mane RF IF #248239: Displays Silver only for valid metalType 2 data. -->
+            <p
+              id="silverRateSection"
+              class="company-brand-cluster__rate company-brand-cluster__rate--silver"
+              hidden
+            >
+              <span class="company-brand-cluster__rate-label">Silver</span>
+
+              <span
+                id="silverRateValue"
+                class="company-brand-cluster__rate-value"
+              ></span>
+
+              <span
+                id="silverRateUnit"
+                class="company-brand-cluster__rate-unit"
+              ></span>
             </p>
           </div>
 

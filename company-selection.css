@@ -908,3 +908,38 @@ button {
     transform: none;
   }
 }
+
+/* Added By Ajit Mane RF IF #248239: Ensures hidden rate elements are never displayed. */
+#metalRatesLoader[hidden],
+#metalRatesCard[hidden],
+#goldRateSection[hidden],
+#silverRateSection[hidden] {
+  display: none !important;
+}
+
+/* Added By Ajit Mane RF IF #248239: Displays only the centered indicator while rates are loading. */
+.company-brand-cluster__rates-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+}
+
+/* Added By Ajit Mane RF IF #248239: Styles the animated rate-loading indicator. */
+.company-brand-cluster__rates-spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(177, 128, 36, 0.25);
+  border-top-color: #b18024;
+  border-radius: 50%;
+  animation: metal-rates-spin 0.8s linear infinite;
+}
+
+/* Added By Ajit Mane RF IF #248239: Rotates the loading indicator continuously. */
+@keyframes metal-rates-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
