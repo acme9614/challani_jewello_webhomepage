@@ -343,7 +343,7 @@ window.addEventListener("rateDetailsUpdated", function (event) {
 
   // Added By Ajit Mane RF IF #248239: Finds Gold and Silver records from the filtered Flutter response.
   var goldRate = event.detail.data.find(function (rate) {
-    return Number(rate.metalType) === 1;
+    return Number(rate.metalType) === 4;
   });
 
   var silverRate = event.detail.data.find(function (rate) {
