@@ -308,9 +308,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Added By Ajit Mane RF IF #248239: Listens for the filtered rate response sent by Flutter.
 window.addEventListener("rateDetailsUpdated", function (event) {
-  clearTimeout(metalRatesResponseTimeout);
-
   var elements = getMetalRateElements();
+  var response = event.detail;
+
+  console.log("========================================");
+  console.log("Rate response received from Flutter:", response);
 
   // Added By Ajit Mane RF IF #248239: Stops processing when required HTML elements are unavailable.
   if (!areMetalRateElementsAvailable(elements)) {
@@ -318,48 +320,98 @@ window.addEventListener("rateDetailsUpdated", function (event) {
     return;
   }
 
-  // Added By Ajit Mane RF IF #248239: Hides the indicator and rates before processing the response.
+  // Added By Ajit Mane RF IF #248239: Keeps only the indicator visible while Flutter loads the rate details.
+  if (response && response.status === "loading") {
+    elements.loader.hidden = false;
+    elements.card.hidden = true;
+    elements.gold.section.hidden = true;
+    elements.silver.section.hidden = true;
+
+    console.log("Rate details are loading.");
+    console.log("========================================");
+    return;
+  }
+
+  // Added By Ajit Mane RF IF #248239: Stops the no-response timeout after Flutter returns success or error.
+  clearTimeout(metalRatesResponseTimeout);
+
+  // Added By Ajit Mane RF IF #248239: Hides the indicator and rate rows before processing the final response.
   elements.loader.hidden = true;
   elements.card.hidden = true;
   elements.gold.section.hidden = true;
   elements.silver.section.hidden = true;
 
-  console.log("Rate response received from Flutter:", event.detail);
-
-  // Added By Ajit Mane RF IF #248239: Keeps the rates section hidden for an empty or error response.
-  if (
-    !event.detail ||
-    event.detail.hasError === true ||
-    !Array.isArray(event.detail.data)
-  ) {
+  // Added By Ajit Mane RF IF #248239: Keeps the complete rates section hidden when Flutter sends an error.
+  if (!response || response.hasError === true) {
     console.error(
       "Flutter rate error:",
-      event.detail && event.detail.error
-        ? event.detail.error
-        : "Valid rate data was not received."
+      response && response.error
+        ? response.error
+        : "Unable to load rate details."
     );
+    console.log("========================================");
     return;
   }
 
-  // Added By Ajit Mane RF IF #248239: Finds Gold and Silver records from the filtered Flutter response.
-  var goldRate = event.detail.data.find(function (rate) {
+  // Added By Ajit Mane RF IF #248239: Keeps the complete rates section hidden when Flutter sends no rate records.
+  if (!Array.isArray(response.data) || response.data.length === 0) {
+    console.warn("No rate records received from Flutter.");
+    console.log("========================================");
+    return;
+  }
+
+  // Added By Ajit Mane RF IF #248239: Prints the complete filtered response received from Flutter.
+  console.log("Complete filtered rate data:", response.data);
+
+  // Added By Ajit Mane RF IF #248239: Prints every rate record and its metalType received from Flutter.
+  response.data.forEach(function (rate, index) {
+    console.log(
+      "Flutter rate record " + (index + 1) + ":",
+      {
+        metalType: rate.metalType,
+        saleRate: rate.saleRate,
+        purityDesc: rate.purityDesc
+      }
+    );
+  });
+
+  // Added By Ajit Mane RF IF #248239: Prints all metalType values received from Flutter in one list.
+  console.log(
+    "Metal types received from Flutter:",
+    response.data.map(function (rate) {
+      return rate.metalType;
+    })
+  );
+
+  console.table(response.data);
+
+  // Added By Ajit Mane RF IF #248239: Temporarily finds metalType 4 to verify the Flutter-to-HTML rate integration.
+  var goldRate = response.data.find(function (rate) {
     return Number(rate.metalType) === 4;
   });
 
-  var silverRate = event.detail.data.find(function (rate) {
+  // Added By Ajit Mane RF IF #248239: Finds the Silver rate using metalType 2.
+  var silverRate = response.data.find(function (rate) {
     return Number(rate.metalType) === 2;
   });
 
-  // Added By Ajit Mane RF IF #248239: Displays each rate only when its record contains a valid sale rate.
+  // Added By Ajit Mane RF IF #248239: Prints the selected testing and Silver records.
+  console.log("Selected metalType 4 testing rate:", goldRate);
+  console.log("Selected metalType 2 Silver rate:", silverRate);
+
+  // Added By Ajit Mane RF IF #248239: Displays each rate only when it contains a valid sale rate.
   var hasGoldRate = displayMetalRate(goldRate, elements.gold);
   var hasSilverRate = displayMetalRate(silverRate, elements.silver);
 
-  // Added By Ajit Mane RF IF #248239: Displays the card when Gold or Silver has a valid rate.
+  // Added By Ajit Mane RF IF #248239: Displays the card when at least one valid rate is available.
   elements.card.hidden = !(hasGoldRate || hasSilverRate);
 
-  if (hasGoldRate || hasSilverRate) {
-    console.table(event.detail.data);
-  } else {
-    console.warn("No valid Gold or Silver rates received from Flutter.");
+  // Added By Ajit Mane RF IF #248239: Prints whether the received rates were displayed.
+  console.log("MetalType 4 testing rate displayed:", hasGoldRate);
+  console.log("MetalType 2 Silver rate displayed:", hasSilverRate);
+  console.log("Rates card hidden:", elements.card.hidden);
+
+  if (!hasGoldRate && !hasSilverRate) {
+    console.warn("No valid testing or Silver rate was available.");
   }
 });
