@@ -385,18 +385,18 @@ window.addEventListener("rateDetailsUpdated", function (event) {
 
   console.table(response.data);
 
-  // Added By Ajit Mane RF IF #248239: Temporarily finds metalType 4 to verify the Flutter-to-HTML rate integration.
+  // Added By Ajit Mane RF  #248239:  finds metalType 1 to verify the Flutter-to-HTML rate integration.
   var goldRate = response.data.find(function (rate) {
-    return Number(rate.metalType) === 4;
+    return Number(rate.metalType) === 1;
   });
 
-  // Added By Ajit Mane RF IF #248239: Finds the Silver rate using metalType 2.
+  // Added By Ajit Mane RF  #248239: Finds the Silver rate using metalType 2.
   var silverRate = response.data.find(function (rate) {
     return Number(rate.metalType) === 2;
   });
 
-  // Added By Ajit Mane RF IF #248239: Prints the selected testing and Silver records.
-  console.log("Selected metalType 4 testing rate:", goldRate);
+  // Added By Ajit Mane RF IF #248239: Prints the selected Gold and Silver records.
+  console.log("Selected metalType 1 Gold rate:", goldRate);
   console.log("Selected metalType 2 Silver rate:", silverRate);
 
   // Added By Ajit Mane RF IF #248239: Displays each rate only when it contains a valid sale rate.
@@ -407,7 +407,7 @@ window.addEventListener("rateDetailsUpdated", function (event) {
   elements.card.hidden = !(hasGoldRate || hasSilverRate);
 
   // Added By Ajit Mane RF IF #248239: Prints whether the received rates were displayed.
-  console.log("MetalType 4 testing rate displayed:", hasGoldRate);
+  console.log("MetalType 1 Gold rate displayed:", hasGoldRate);
   console.log("MetalType 2 Silver rate displayed:", hasSilverRate);
   console.log("Rates card hidden:", elements.card.hidden);
 
