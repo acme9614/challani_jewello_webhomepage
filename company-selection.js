@@ -392,7 +392,7 @@ window.addEventListener("rateDetailsUpdated", function (event) {
 
   // Added By Ajit Mane RF  #248239: Finds the Silver rate using metalType 2.
   var silverRate = response.data.find(function (rate) {
-    return Number(rate.metalType) === 2;
+    return Number(rate.metalType) === 4;
   });
 
   // Added By Ajit Mane RF IF #248239: Prints the selected Gold and Silver records.
