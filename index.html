@@ -1,132 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Select company — Challani</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="company-selection.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="company-page" class="company-selection-page">
-      <svg class="company-page-header__clip-defs" aria-hidden="true">
-        <defs>
-          <clipPath id="companyHeaderCurveClip" clipPathUnits="objectBoundingBox">
-            <path d="M0,0 H1 V0.88 C0.75,1.02 0.25,1.02 0,0.88 Z" />
-          </clipPath>
-          <linearGradient id="companyHeaderCurveGoldGrad" gradientUnits="userSpaceOnUse" x1="0" y1="88" x2="36" y2="88">
-            <stop offset="0%" stop-color="#b89440" stop-opacity="0.04" />
-            <stop offset="35%" stop-color="#e0c060" stop-opacity="0.5" />
-            <stop offset="50%" stop-color="#fff6d6" stop-opacity="0.95" />
-            <stop offset="65%" stop-color="#c9a227" stop-opacity="0.5" />
-            <stop offset="100%" stop-color="#b89440" stop-opacity="0.04" />
-            <animate attributeName="x1" values="-40;100" dur="3.6s" repeatCount="indefinite" />
-            <animate attributeName="x2" values="0;140" dur="3.6s" repeatCount="indefinite" />
-          </linearGradient>
-          <filter id="companyHeaderCurveGoldBlur" x="-15%" y="-120%" width="130%" height="340%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="0.7" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-      </svg>
-
-      <header class="company-page-header">
-        <div class="company-page-header__panel">
-          <div class="company-page-header__media">
-            <img class="company-page-header__media-img" src="assets/company_header_cjm.png" alt="bgimage" data-fallback="" />
-            <span class="company-page-header__silk-sheen"></span>
-            <span class="company-page-header__glass-fade"></span>
-          </div>
-        </div>
-
-        <svg class="company-page-header__curve-glow" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          <path class="company-page-header__curve-glow-base" d="M0,88 C25,102 75,102 100,88" fill="none" />
-          <path class="company-page-header__curve-glow-shine" d="M0,88 C25,102 75,102 100,88" fill="none" stroke="url(#companyHeaderCurveGoldGrad)" filter="url(#companyHeaderCurveGoldBlur)" />
+        <svg class="company-page-header__clip-defs" aria-hidden="true">
+            <defs>
+                <clipPath id="companyHeaderCurveClip" clipPathUnits="objectBoundingBox">
+                    <path d="M0,0 H1 V0.88 C0.75,1.02 0.25,1.02 0,0.88 Z" />
+                </clipPath>
+                <linearGradient id="companyHeaderCurveGoldGrad" gradientUnits="userSpaceOnUse" x1="0" y1="88" x2="36"
+                    y2="88">
+                    <stop offset="0%" stop-color="#b89440" stop-opacity="0.04" />
+                    <stop offset="35%" stop-color="#e0c060" stop-opacity="0.5" />
+                    <stop offset="50%" stop-color="#fff6d6" stop-opacity="0.95" />
+                    <stop offset="65%" stop-color="#c9a227" stop-opacity="0.5" />
+                    <stop offset="100%" stop-color="#b89440" stop-opacity="0.04" />
+                    <animate attributeName="x1" values="-40;100" dur="3.6s" repeatCount="indefinite" />
+                    <animate attributeName="x2" values="0;140" dur="3.6s" repeatCount="indefinite" />
+                </linearGradient>
+                <filter id="companyHeaderCurveGoldBlur" x="-15%" y="-120%" width="130%" height="340%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="0.7" result="blur" />
+                    <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
         </svg>
 
-        <div class="company-page-header__brand">
-          <img class="company-page-header__logo" src="assets/challani_logo.png" alt="Challani" />
-        </div>
-
-        <div class="company-page-header__earring-badge" aria-hidden="true">
-          <span class="company-page-header__earring-glow"></span>
-          <span class="company-page-header__earring-ring"></span>
-          <div class="company-page-header__earring-disc">
-            <img class="company-page-header__earring-img" src="assets/company_header2.png" alt="logo" />
-          </div>
-        </div>
-
-        <div class="company-page-header__settings">
-          <div class="company-selection-settings" id="settingsRoot">
-            <button type="button" class="company-selection-settings__trigger" id="settingsBtn" aria-label="Account settings" aria-expanded="false">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="1.75" />
-                <path d="M19.4 13a7.8 7.8 0 0 0 .05-2l2.05-1.55-2-3.46-2.45.9a7.7 7.7 0 0 0-1.75-1L14.9 3h-5.8l-.4 2.89a7.7 7.7 0 0 0-1.75 1l-2.45-.9-2 3.46L4.55 11a7.8 7.8 0 0 0 0 2l-2.05 1.55 2 3.46 2.45-.9a7.7 7.7 0 0 0 1.75 1L9.1 21h5.8l.4-2.89a7.7 7.7 0 0 0 1.75-1l2.45.9 2-3.46L19.4 13Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" />
-              </svg>
-            </button>
-            <div class="company-selection-settings__panel" id="settingsPanel" hidden>
-              <div class="company-selection-settings__user">
-                <p class="company-selection-settings__name">User</p>
-                <p class="company-selection-settings__phone">—</p>
-              </div>
-              <div class="company-selection-settings__actions">
-                <button type="button" data-settings-action="mpin">Change MPIN</button>
-                <button type="button" data-settings-action="logout">Logout</button>
-              </div>
+        <header class="company-page-header">
+            <div class="company-page-header__panel">
+                <div class="company-page-header__media">
+                    <img class="company-page-header__media-img" src="assets/company_header_cjm.png" alt="bgimage"
+                        data-fallback="" />
+                    <span class="company-page-header__silk-sheen"></span>
+                    <span class="company-page-header__glass-fade"></span>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="company-page-header__brand-overlay">
-          <div class="company-brand-cluster company-brand-cluster--diamonds-only">
-            <div class="company-brand-cluster__diamonds" role="list">
-              <button type="button" class="company-brand-cluster__diamond company-brand-cluster__diamond--cjm is-active" data-brand="cjm" data-merchant-code="12885" role="listitem" aria-label="CHALLANI JEWELLERY MART" aria-pressed="true">
-                <span class="company-brand-cluster__diamond-face">
-                  <span class="company-card-logo-wrap">
-                    <img class="company-card-logo" src="assets/challani_logo.png" alt="challini" />
-                  </span>
-                </span>
-              </button>
-              <button type="button" class="company-brand-cluster__diamond company-brand-cluster__diamond--fedha" data-brand="fedha" data-merchant-code="12883" role="listitem" aria-label="Fedha by CHALLANI" aria-pressed="false">
-                <span class="company-brand-cluster__diamond-face">
-                  <span class="company-card-logo-wrap">
-                    <img class="company-card-logo" src="assets/fedha_logo.png" alt="fedha" />
-                  </span>
-                </span>
-              </button>
-              <button type="button" class="company-brand-cluster__diamond company-brand-cluster__diamond--lille" data-brand="lille" data-merchant-code="12884" role="listitem" aria-label="Lille By CHALLANI" aria-pressed="false">
-                <span class="company-brand-cluster__diamond-face">
-                  <span class="company-card-logo-wrap">
-                    <img class="company-card-logo" src="assets/lille_logo.png" alt="lille" />
-                  </span>
-                </span>
-              </button>
+            <svg class="company-page-header__curve-glow" viewBox="0 0 100 100" preserveAspectRatio="none"
+                aria-hidden="true">
+                <path class="company-page-header__curve-glow-base" d="M0,88 C25,102 75,102 100,88" fill="none" />
+                <path class="company-page-header__curve-glow-shine" d="M0,88 C25,102 75,102 100,88" fill="none"
+                    stroke="url(#companyHeaderCurveGoldGrad)" filter="url(#companyHeaderCurveGoldBlur)" />
+            </svg>
+
+            <div class="company-page-header__brand">
+                <img class="company-page-header__logo" src="assets/challani_logo.png" alt="Challani" />
             </div>
-          </div>
-        </div>
-      </header>
 
-      <main class="company-selection-content">
-        <section class="company-brand-cluster company-brand-cluster--panel-only" aria-label="Choose a brand">
-          <div class="company-brand-cluster__stage company-brand-cluster__stage--panel-only">
-            <div class="company-brand-cluster__diamonds-spacer" aria-hidden="true"></div>
-            <div class="company-brand-cluster__side-actions">
-              <button type="button" class="company-about-btn company-brand-cluster__about" id="aboutBtn">About Us</button>
-              <p class="company-brand-cluster__hint">· Plans · Schemes<br />· Digi Gold</p>
+            <div class="company-page-header__earring-badge" aria-hidden="true">
+                <span class="company-page-header__earring-glow"></span>
+                <span class="company-page-header__earring-ring"></span>
+                <div class="company-page-header__earring-disc">
+                    <img class="company-page-header__earring-img" src="assets/company_header2.png" alt="logo" />
+                </div>
             </div>
-          </div>
-          <p class="company-selection-tagline company-brand-cluster__tagline">
-            <span>Tap a logo to open that brand</span>
-          </p>
-        </section>
 
-        <div class="company-selection-middle">
-          <!-- <div class="company-brand-cluster__rates-card" aria-label="Today's gold and silver rates">
+            <div class="company-page-header__settings">
+                <div class="company-selection-settings" id="settingsRoot">
+                    <button type="button" class="company-selection-settings__trigger" id="settingsBtn"
+                        aria-label="Account settings" aria-expanded="false">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor"
+                                stroke-width="1.75" />
+                            <path
+                                d="M19.4 13a7.8 7.8 0 0 0 .05-2l2.05-1.55-2-3.46-2.45.9a7.7 7.7 0 0 0-1.75-1L14.9 3h-5.8l-.4 2.89a7.7 7.7 0 0 0-1.75 1l-2.45-.9-2 3.46L4.55 11a7.8 7.8 0 0 0 0 2l-2.05 1.55 2 3.46 2.45-.9a7.7 7.7 0 0 0 1.75 1L9.1 21h5.8l.4-2.89a7.7 7.7 0 0 0 1.75-1l2.45.9 2-3.46L19.4 13Z"
+                                stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="company-selection-settings__panel" id="settingsPanel" hidden>
+                        <div class="company-selection-settings__user">
+                            <p class="company-selection-settings__name">User</p>
+                            <p class="company-selection-settings__phone">—</p>
+                        </div>
+                        <div class="company-selection-settings__actions">
+                            <button type="button" data-settings-action="mpin">Change MPIN</button>
+                            <button type="button" data-settings-action="logout">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="company-page-header__brand-overlay">
+                <div class="company-brand-cluster company-brand-cluster--diamonds-only">
+                    <div class="company-brand-cluster__diamonds" role="list">
+                        <button type="button"
+                            class="company-brand-cluster__diamond company-brand-cluster__diamond--cjm is-active"
+                            data-brand="cjm" data-merchant-code="12885" role="listitem"
+                            aria-label="CHALLANI JEWELLERY MART" aria-pressed="true">
+                            <span class="company-brand-cluster__diamond-face">
+                                <span class="company-card-logo-wrap">
+                                    <img class="company-card-logo" src="assets/challani_logo.png" alt="challini" />
+                                </span>
+                            </span>
+                        </button>
+                        <button type="button"
+                            class="company-brand-cluster__diamond company-brand-cluster__diamond--fedha"
+                            data-brand="fedha" data-merchant-code="12883" role="listitem" aria-label="Fedha by CHALLANI"
+                            aria-pressed="false">
+                            <span class="company-brand-cluster__diamond-face">
+                                <span class="company-card-logo-wrap">
+                                    <img class="company-card-logo" src="assets/fedha_logo.png" alt="fedha" />
+                                </span>
+                            </span>
+                        </button>
+                        <button type="button"
+                            class="company-brand-cluster__diamond company-brand-cluster__diamond--lille"
+                            data-brand="lille" data-merchant-code="12884" role="listitem" aria-label="Lille By CHALLANI"
+                            aria-pressed="false">
+                            <span class="company-brand-cluster__diamond-face">
+                                <span class="company-card-logo-wrap">
+                                    <img class="company-card-logo" src="assets/lille_logo.png" alt="lille" />
+                                </span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="company-selection-content">
+            <section class="company-brand-cluster company-brand-cluster--panel-only" aria-label="Choose a brand">
+                <div class="company-brand-cluster__stage company-brand-cluster__stage--panel-only">
+                    <div class="company-brand-cluster__diamonds-spacer" aria-hidden="true"></div>
+                    <div class="company-brand-cluster__side-actions">
+                        <button type="button" class="company-about-btn company-brand-cluster__about" id="aboutBtn">About
+                            Us</button>
+                        <p class="company-brand-cluster__hint">· Plans · Schemes<br />· Digi Gold</p>
+                    </div>
+                </div>
+                <p class="company-selection-tagline company-brand-cluster__tagline">
+                    <span>Tap a logo to open that brand</span>
+                </p>
+            </section>
+
+            <div class="company-selection-middle">
+                <!-- <div class="company-brand-cluster__rates-card" aria-label="Today's gold and silver rates">
             <p class="company-brand-cluster__rate company-brand-cluster__rate--gold">
               <span class="company-brand-cluster__rate-label">Gold</span>
               <span class="company-brand-cluster__rate-value">₹14,480</span>
@@ -138,112 +159,600 @@
             </p>
           </div> -->
 
-          <!-- Added By Ajit Mane RF IF #248239: Shows only the loading indicator while waiting for Flutter response. -->
-          <div
-            id="metalRatesLoader"
-            class="company-brand-cluster__rates-loader"
-            role="status"
-            aria-label="Loading today's rates"
-          >
-            <span
-              class="company-brand-cluster__rates-spinner"
-              aria-hidden="true"
-            ></span>
-          </div>
+                <!-- Added By Ajit Mane RF IF #248239: Shows only the loading indicator while waiting for Flutter response. -->
+                <div id="metalRatesLoader" class="company-brand-cluster__rates-loader" role="status"
+                    aria-label="Loading today's rates">
+                    <span class="company-brand-cluster__rates-spinner" aria-hidden="true"></span>
+                </div>
 
-          <!-- Added By Ajit Mane RF IF #248239: Remains hidden until valid Gold or Silver data is received. -->
-          <div
-            id="metalRatesCard"
-            class="company-brand-cluster__rates-card"
-            aria-label="Today's gold and silver rates"
-            hidden
-          >
-            <!-- Added By Ajit Mane RF IF #248239: Displays Gold only for valid metalType 1 data. -->
-            <p
-              id="goldRateSection"
-              class="company-brand-cluster__rate company-brand-cluster__rate--gold"
-              hidden
-            >
-              <span class="company-brand-cluster__rate-label">Gold</span>
+                <!-- Added By Ajit Mane RF IF #248239: Remains hidden until valid Gold or Silver data is received. -->
+                <div id="metalRatesCard" class="company-brand-cluster__rates-card"
+                    aria-label="Today's gold and silver rates" hidden>
+                    <!-- Added By Ajit Mane RF IF #248239: Displays Gold only for valid metalType 1 data. -->
+                    <p id="goldRateSection" class="company-brand-cluster__rate company-brand-cluster__rate--gold"
+                        hidden>
+                        <span class="company-brand-cluster__rate-label">Gold</span>
 
-              <span
-                id="goldRateValue"
-                class="company-brand-cluster__rate-value"
-              ></span>
+                        <span id="goldRateValue" class="company-brand-cluster__rate-value"></span>
 
-              <span
-                id="goldRateUnit"
-                class="company-brand-cluster__rate-unit"
-              ></span>
-            </p>
+                        <span id="goldRateUnit" class="company-brand-cluster__rate-unit"></span>
+                    </p>
 
-            <!-- Added By Ajit Mane RF IF #248239: Displays Silver only for valid metalType 2 data. -->
-            <p
-              id="silverRateSection"
-              class="company-brand-cluster__rate company-brand-cluster__rate--silver"
-              hidden
-            >
-              <span class="company-brand-cluster__rate-label">Silver</span>
+                    <!-- Added By Ajit Mane RF IF #248239: Displays Silver only for valid metalType 2 data. -->
+                    <p id="silverRateSection" class="company-brand-cluster__rate company-brand-cluster__rate--silver"
+                        hidden>
+                        <span class="company-brand-cluster__rate-label">Silver</span>
 
-              <span
-                id="silverRateValue"
-                class="company-brand-cluster__rate-value"
-              ></span>
+                        <span id="silverRateValue" class="company-brand-cluster__rate-value"></span>
 
-              <span
-                id="silverRateUnit"
-                class="company-brand-cluster__rate-unit"
-              ></span>
-            </p>
-          </div>
+                        <span id="silverRateUnit" class="company-brand-cluster__rate-unit"></span>
+                    </p>
+                </div>
 
-          <section class="company-trust-ribbon" aria-label="Challani quality and trust">
-            <ul class="company-trust-ribbon__list">
-              <li class="company-trust-ribbon__item">
-                <span class="company-trust-ribbon__icon"><img src="assets/certified_diamond_logo.png" alt="certified" /></span>
-                <span class="company-trust-ribbon__spacer"></span>
-                <span class="company-trust-ribbon__label"><span>Certified</span><span>Diamonds</span></span>
-              </li>
-              <li class="company-trust-ribbon__item">
-                <span class="company-trust-ribbon__icon"><img src="assets/bis_halmark_logo.png" alt="hallmark" /></span>
-                <span class="company-trust-ribbon__spacer"></span>
-                <span class="company-trust-ribbon__label"><span>BIS</span><span>Hallmark</span></span>
-              </li>
-              <li class="company-trust-ribbon__item">
-                <span class="company-trust-ribbon__icon"><img src="assets/complete_transparency.png" alt="transparency" /></span>
-                <span class="company-trust-ribbon__spacer"></span>
-                <span class="company-trust-ribbon__label"><span>Complete</span><span>Transparency</span></span>
-              </li>
-            </ul>
-          </section>
+                <section class="company-trust-ribbon" aria-label="Challani quality and trust">
+                    <ul class="company-trust-ribbon__list">
+                        <li class="company-trust-ribbon__item">
+                            <span class="company-trust-ribbon__icon"><img src="assets/certified_diamond_logo.png"
+                                    alt="certified" /></span>
+                            <span class="company-trust-ribbon__spacer"></span>
+                            <span class="company-trust-ribbon__label"><span>Certified</span><span>Diamonds</span></span>
+                        </li>
+                        <li class="company-trust-ribbon__item">
+                            <span class="company-trust-ribbon__icon"><img src="assets/bis_halmark_logo.png"
+                                    alt="hallmark" /></span>
+                            <span class="company-trust-ribbon__spacer"></span>
+                            <span class="company-trust-ribbon__label"><span>BIS</span><span>Hallmark</span></span>
+                        </li>
+                        <li class="company-trust-ribbon__item">
+                            <span class="company-trust-ribbon__icon"><img src="assets/complete_transparency.png"
+                                    alt="transparency" /></span>
+                            <span class="company-trust-ribbon__spacer"></span>
+                            <span
+                                class="company-trust-ribbon__label"><span>Complete</span><span>Transparency</span></span>
+                        </li>
+                    </ul>
+                </section>
 
-          <div class="company-wealth-banner" role="note">
-            <p class="company-wealth-banner__line">Start your wealth journey</p>
-            <p class="company-wealth-banner__line">by just 3 clicks</p>
-          </div>
+                <div class="company-wealth-banner" role="note">
+                    <p class="company-wealth-banner__line">Start your wealth journey</p>
+                    <p class="company-wealth-banner__line">by just 3 clicks</p>
+                </div>
 
-          <div class="company-social-links">
-            <a class="company-social-links__web" href="https://www.challanijewels.com/"  rel="noopener noreferrer">www.challanijewels.com</a>
-            <div class="company-social-links__icons">
-              <a class="company-social-links__icon company-social-links__icon--ig" href="https://www.instagram.com/challani_jewellery"  rel="noopener noreferrer" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.241 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.241-1.308-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.974-.974 2.241-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0 3.838a6 6 0 100 12 6 6 0 000-12zm0 1.8a4.2 4.2 0 110 8.4 4.2 4.2 0 010-8.4zm6.406-3.845a1.44 1.44 0 11-.001 2.881 1.44 1.44 0 01.001-2.881z"/></svg>
-              </a>
-              <a class="company-social-links__icon company-social-links__icon--fb" href="https://www.facebook.com/ChallaniJewelleryMart/"  rel="noopener noreferrer" aria-label="Facebook">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              </a>
+                <div class="company-social-links">
+                    <a class="company-social-links__web" href="https://www.challanijewels.com/"
+                        rel="noopener noreferrer">www.challanijewels.com</a>
+                    <div class="company-social-links__icons">
+                        <a class="company-social-links__icon company-social-links__icon--ig"
+                            href="https://www.instagram.com/challani_jewellery" rel="noopener noreferrer"
+                            aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.241 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.241-1.308-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.974-.974 2.241-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0 3.838a6 6 0 100 12 6 6 0 000-12zm0 1.8a4.2 4.2 0 110 8.4 4.2 4.2 0 010-8.4zm6.406-3.845a1.44 1.44 0 11-.001 2.881 1.44 1.44 0 01.001-2.881z" />
+                            </svg>
+                        </a>
+                        <a class="company-social-links__icon company-social-links__icon--fb"
+                            href="https://www.facebook.com/ChallaniJewelleryMart/" rel="noopener noreferrer"
+                            aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </main>
+        </main>
     </div>
 
     <dialog class="about-dialog" id="aboutDialog">
-      <h2>About Us</h2>
-      <p>The Challani family brings together trusted jewellery brands — Challani Jewellery Mart, Fedha, and Lille — offering gold, silver, and diamond collections with craftsmanship and care across South India.</p>
-      <button type="button" id="aboutClose">Close</button>
+        <!-- Flow Brand Header Bar -->
+        <header class="flow-page-chrome flow-page-chrome--cjm" id="brand-header">
+            <div class="flow-page-title-row">
+                <a href="javascript:history.back()" class="back-to-hub-btn" aria-label="Back">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </a>
+
+                <h1 class="flow-page-title" id="page-title">About Challani</h1>
+
+                <!-- ADD THIS -->
+                <button type="button" class="about-dialog-close" id="aboutClose" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round">
+                        <path d="M6 6l12 12" />
+                        <path d="M18 6L6 18" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- <p>The Challani family brings together trusted jewellery brands — Challani Jewellery Mart, Fedha, and Lille — offering gold, silver, and diamond collections with craftsmanship and care across South India.</p> -->
+
+        <!-- Main About Us Page Container -->
+        <div id="about-us-page" class="page active about-us-page about-us-content-ready schemes-page about-us-page--cjm"
+            style="--au-primary: #982021; --au-primary-rgb: 152, 32, 33; --au-accent: #9b6529; --au-eyebrow: #9b6529; --au-bg: #ffffff;">
+            <!-- Dashboard Scrollable Body -->
+            <main class="home-dashboard-body home-dashboard-body--cjm" id="dashboard-body" data-brand="cjm">
+                <div class="dashboard-content about-us-flow-content">
+
+                    <!-- Hero Title -->
+                    <h1 class="about-us-hero-title" id="hero-title">
+                        About <span class="challani-font">CHALLANI</span>
+                    </h1>
+
+                    <!-- Intro Paragraph -->
+                    <p class="about-us-intro" id="intro-body">
+                        For 13 years, Challani Jewellery Mart has believed in one simple thing every piece of jewellery
+                        you wear should say something beautiful about you. From handcrafted Jadau to contemporary
+                        Italian gold, from temple-inspired traditions to the brilliance of diamonds, each collection is
+                        made with care, purpose, and a deep respect for the person who wears it. Challani Promises you
+                        for premium quality, honest pricing, and a unique design for every moment in your life.
+                    </p>
+
+                    <div class="about-us-content">
+
+                        <!-- Brand Story & Video Hero Block -->
+                        <section class="about-us-hero-block" aria-label="Brand story">
+                            <p class="about-us-eyebrow" id="eyebrow-text">JEWELS AS UNIQUE AS YOU</p>
+                            <h2 class="about-us-headline" id="headline-text">Commitment, Forever, In Every Sparkling
+                                Jewel</h2>
+
+                            <!-- Hero Video in Styled Golden Frame -->
+                            <div class="about-us-hero-video-wrap">
+                                <video id="heroVideo" class="about-us-hero-video" src="assets/videos/Youtube.mp4"
+                                    autoplay loop muted playsinline preload="auto"
+                                    aria-label="Challani jewellery showcase video">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <button type="button" class="video-ctrl-pill" onclick="toggleHeroAudio()"
+                                    id="videoAudioBtn">
+                                    <svg id="audioIcon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                                    </svg>
+                                    <span id="audioLabel">Unmute</span>
+                                </button>
+                            </div>
+                        </section>
+
+                        <!-- Stats Highlight Badges -->
+                        <div class="about-us-stats" role="list" aria-label="Company highlights">
+                            <div class="about-us-stat" role="listitem">
+                                <span class="about-us-stat-value">13Years</span>
+                                <span class="about-us-stat-label">YEARS OF LEGACY</span>
+                            </div>
+                            <div class="about-us-stat" role="listitem">
+                                <span class="about-us-stat-value">3+</span>
+                                <span class="about-us-stat-label">SHOWROOMS</span>
+                            </div>
+                            <div class="about-us-stat" role="listitem">
+                                <span class="about-us-stat-value">1L+</span>
+                                <span class="about-us-stat-label">Happy Clients</span>
+                            </div>
+                        </div>
+
+                        <!-- Offerings Card -->
+                        <article class="about-us-card">
+                            <h3 id="about-us-offerings-heading" class="about-us-card__title">Our Offerings</h3>
+                            <div class="about-us-card__body">
+                                <div class="about-us-chip-row" role="list" aria-label="Metal offerings">
+                                    <span class="about-us-chip about-us-chip--metal" role="listitem">Gold</span>
+                                    <span class="about-us-chip about-us-chip--metal" role="listitem">Silver</span>
+                                    <span class="about-us-chip about-us-chip--metal" role="listitem">Diamonds</span>
+                                    <span class="about-us-chip about-us-chip--metal" role="listitem">Platinum</span>
+                                </div>
+                                <div class="about-us-chip-row about-us-chip-row--collections" role="list"
+                                    aria-label="Collection types">
+                                    <span class="about-us-chip about-us-chip--collection" role="listitem">POLKI</span>
+                                    <span class="about-us-chip about-us-chip--collection" role="listitem">TEMPLE</span>
+                                    <span class="about-us-chip about-us-chip--collection" role="listitem">ANTIQUE</span>
+                                    <span class="about-us-chip about-us-chip--collection"
+                                        role="listitem">VICTORIAN</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Savings Schemes Section -->
+                        <section class="about-us-schemes" aria-labelledby="about-us-schemes-heading">
+                            <h3 id="about-us-schemes-heading" class="about-us-schemes__section-title">
+                                Savings Schemes
+                            </h3>
+
+                            <!-- 1. CJM Scheme Card -->
+                            <div class="about-us-schemes-brand about-us-schemes-brand--cjm">
+                                <div class="about-us-schemes-banner about-us-schemes-banner--cjm">
+                                    <div class="about-us-schemes-banner__bg" aria-hidden="true"
+                                        style="background-image: url('assets/about_us_cjm_scheme_bg.png');"></div>
+                                    <div class="about-us-schemes-banner__shade" aria-hidden="true"></div>
+                                    <div class="about-us-schemes-banner__content">
+                                        <div class="about-us-schemes-banner__dual">
+                                            <div class="about-us-schemes-banner__metal-row">
+                                                <h4 class="about-us-schemes-banner__metal">Gold</h4>
+                                                <h4 class="about-us-schemes-banner__metal">Silver</h4>
+                                            </div>
+                                            <div
+                                                class="about-us-schemes-banner__columns about-us-schemes-banner__columns--dual">
+                                                <div class="about-us-schemes-banner__column">
+                                                    <div class="about-us-schemes-banner__items">
+                                                        <div class="about-us-schemes-banner__item">
+                                                            <p
+                                                                class="about-us-schemes-banner__name about-us-schemes-banner__name--script">
+                                                                Amara</p>
+                                                            <p class="about-us-schemes-banner__tagline">ONE INSTALMENT
+                                                                BOUNCE</p>
+                                                        </div>
+                                                        <div class="about-us-schemes-banner__item">
+                                                            <p
+                                                                class="about-us-schemes-banner__name about-us-schemes-banner__name--script">
+                                                                Swashi</p>
+                                                            <p class="about-us-schemes-banner__tagline">MONTHLY
+                                                                INSTALMENT SAVING SCHEME</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="about-us-schemes-banner__column about-us-schemes-banner__column--divider">
+                                                    <div class="about-us-schemes-banner__items">
+                                                        <div class="about-us-schemes-banner__item">
+                                                            <p
+                                                                class="about-us-schemes-banner__name about-us-schemes-banner__name--serif">
+                                                                Shuba Avatar</p>
+                                                            <p class="about-us-schemes-banner__tagline">11 MONTHS SCHEME
+                                                            </p>
+                                                        </div>
+                                                        <div class="about-us-schemes-banner__item">
+                                                            <p
+                                                                class="about-us-schemes-banner__name about-us-schemes-banner__name--serif">
+                                                                Divinity</p>
+                                                            <p class="about-us-schemes-banner__tagline">SILVER
+                                                                ACCUMULATION SCHEME</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p
+                                            class="about-us-schemes-banner__brand about-us-schemes-banner__brand--cjm challani-font">
+                                            CHALLANI</p>
+                                    </div>
+                                </div>
+
+                                <div class="about-us-schemes-brand__details">
+                                    <ul class="about-us-schemes-details"
+                                        aria-label="Challani Jewellery Mart scheme details">
+                                        <li class="about-us-schemes-details__item about-us-schemes-details__item--cjm">
+                                            <p class="about-us-schemes-details__text">
+                                                <span class="about-us-schemes-details__name">Amara</span> - ONE
+                                                INSTALMENT BOUNCE - Pay 10 monthly instalments on gold jewellery – your
+                                                11th month is free at Challani Jewellery Mart.
+                                            </p>
+                                        </li>
+                                        <li class="about-us-schemes-details__item about-us-schemes-details__item--cjm">
+                                            <p class="about-us-schemes-details__text">
+                                                <span class="about-us-schemes-details__name">Swashi</span> - MONTHLY
+                                                INSTALMENT SAVING SCHEME - 11-month gold savings plan with up to 9%
+                                                value addition benefit on jewellery purchase after maturity.
+                                            </p>
+                                        </li>
+                                        <li class="about-us-schemes-details__item about-us-schemes-details__item--cjm">
+                                            <p class="about-us-schemes-details__text">
+                                                <span class="about-us-schemes-details__name">Shuba Avatar</span> - 11
+                                                MONTHS SCHEME - One instalment free! - ₹1,000 to ₹1,00,000 - 92.5
+                                                collective silver jewellery at Challani Jewellery Mart. Pay 10 equal
+                                                monthly advances without default – receive one instalment free after 11
+                                                months. Purchase eligible silver articles within 345 days of enrolment.
+                                            </p>
+                                        </li>
+                                        <li class="about-us-schemes-details__item about-us-schemes-details__item--cjm">
+                                            <p class="about-us-schemes-details__text">
+                                                <span class="about-us-schemes-details__name">Divinity</span> - SILVER
+                                                ACCUMULATION SCHEME - Each payment is credited as silver grams at the
+                                                prevailing rate with no making charges on redemption.
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 2. Fedha Scheme Card -->
+                            <div class="about-us-schemes-brand about-us-schemes-brand--fedha">
+                                <div class="about-us-schemes-banner about-us-schemes-banner--fedha">
+                                    <div class="about-us-schemes-banner__bg" aria-hidden="true"
+                                        style="background-image: url('assets/fedha_scheme_aboutus.png');"></div>
+                                    <div class="about-us-schemes-banner__shade" aria-hidden="true"></div>
+                                    <div class="about-us-schemes-banner__content">
+                                        <div class="about-us-schemes-banner__split">
+                                            <h4
+                                                class="about-us-schemes-banner__metal about-us-schemes-banner__metal--center">
+                                                Silver</h4>
+                                            <div
+                                                class="about-us-schemes-banner__columns about-us-schemes-banner__columns--split">
+                                                <div class="about-us-schemes-banner__column">
+                                                    <div class="about-us-schemes-banner__items">
+                                                        <div class="about-us-schemes-banner__item">
+                                                            <p
+                                                                class="about-us-schemes-banner__name about-us-schemes-banner__name--serif">
+                                                                Shuba Avatar</p>
+                                                            <p class="about-us-schemes-banner__tagline">11 MONTHS SCHEME
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p
+                                            class="about-us-schemes-banner__brand about-us-schemes-banner__brand--fedha fedha-font-primary">
+                                            Fedha <span class="fedha-font-by">by</span> <span
+                                                class="partner-challani-font">CHALLANI</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="about-us-schemes-brand__details">
+                                    <ul class="about-us-schemes-details" aria-label="Fedha by Challani scheme details">
+                                        <li
+                                            class="about-us-schemes-details__item about-us-schemes-details__item--fedha">
+                                            <p class="about-us-schemes-details__text">
+                                                <span class="about-us-schemes-details__name">Shuba Avatar</span> - 11
+                                                MONTHS SCHEME - One instalment free! - ₹1,000 to ₹1,00,000 - 92.5
+                                                collective silver jewellery at Fedha by Challani. Pay 10 equal monthly
+                                                advances continuously – your 11th instalment is free toward selected
+                                                silver articles. Redeem within 345 days of enrolment.
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 3. Lille Scheme Card -->
+                            <div class="about-us-schemes-brand about-us-schemes-brand--lille">
+                                <div class="about-us-schemes-banner about-us-schemes-banner--lille">
+                                    <div class="about-us-schemes-banner__bg" aria-hidden="true"
+                                        style="background-image: url('assets/lille_scheme_aboutus.png');"></div>
+                                    <div class="about-us-schemes-banner__shade" aria-hidden="true"></div>
+                                    <div class="about-us-schemes-banner__content">
+                                        <div class="about-us-schemes-banner__split">
+                                            <h4
+                                                class="about-us-schemes-banner__metal about-us-schemes-banner__metal--center">
+                                                Gold</h4>
+                                            <div
+                                                class="about-us-schemes-banner__columns about-us-schemes-banner__columns--split">
+                                                <div class="about-us-schemes-banner__column">
+                                                    <div class="about-us-schemes-banner__items">
+                                                        <div class="about-us-schemes-banner__item">
+                                                            <p
+                                                                class="about-us-schemes-banner__name about-us-schemes-banner__name--script">
+                                                                Amara</p>
+                                                            <p class="about-us-schemes-banner__tagline">ONE INSTALMENT
+                                                                BOUNCE</p>
+                                                        </div>
+                                                        <div class="about-us-schemes-banner__item">
+                                                            <p
+                                                                class="about-us-schemes-banner__name about-us-schemes-banner__name--serif">
+                                                                Little Wonder</p>
+                                                            <p class="about-us-schemes-banner__tagline">VA WAIVER UPTO
+                                                                15%</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p
+                                            class="about-us-schemes-banner__brand about-us-schemes-banner__brand--lille lille-font-primary">
+                                            Lille <span class="lille-font-by">by</span> <span
+                                                class="partner-challani-font">CHALLANI</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="about-us-schemes-brand__details">
+                                    <ul class="about-us-schemes-details" aria-label="Lille by Challani scheme details">
+                                        <li
+                                            class="about-us-schemes-details__item about-us-schemes-details__item--lille">
+                                            <p class="about-us-schemes-details__text">
+                                                <span class="about-us-schemes-details__name">Amara</span> - ONE
+                                                INSTALMENT BOUNCE - 11-month gold & diamond plan at Lille – pay 10
+                                                instalments and your 11th month is free.
+                                            </p>
+                                        </li>
+                                        <li
+                                            class="about-us-schemes-details__item about-us-schemes-details__item--lille">
+                                            <p class="about-us-schemes-details__text">
+                                                <span class="about-us-schemes-details__name">Little Wonder</span> - VA
+                                                WAIVER UPTO 15% - Save monthly for 11 months and enjoy up to 15% value
+                                                addition waiver on Lille jewellery.
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </section>
+
+                        <!-- Digi Gold Section -->
+                        <section class="about-us-dense-block" aria-labelledby="about-us-digi-gold-heading">
+                            <h3 id="about-us-digi-gold-heading" class="about-us-dense-block__label">Digi Gold</h3>
+                            <p class="about-us-dense-block__text">
+                                Buy 22K gold online in small gram amounts – metal is credited to your wallet instantly.
+                                Live board rate per gram is shown before you complete payment at the gateway. Flexible
+                                top-ups from as low as ₹100; every purchase is recorded in your Digi Gold passbook.
+                                Redeem accumulated gold toward Challani jewellery purchases at our showrooms.
+                                Transparent pricing with purity assurance under Challani’s Digi Gold wallet policy.
+                                Secure UPI, card & net-banking payments; KYC applies as per RBI and company rules.
+                            </p>
+                        </section>
+
+                        <!-- Digi Silver Section -->
+                        <section class="about-us-dense-block" aria-labelledby="about-us-digi-silver-heading">
+                            <h3 id="about-us-digi-silver-heading" class="about-us-dense-block__label">Digi Silver</h3>
+                            <p class="about-us-dense-block__text">
+                                Buy sterling silver online in grams – credited to your Fedha Digi Silver wallet. Rates
+                                follow the live Fedha silver board price shown at the time of payment. Ideal for
+                                building toward 92.5 collective silver jewellery at Fedha by Challani. Flexible top-ups
+                                from as low as ₹100 with a full digital passbook history. Works alongside Shuba Avatar
+                                savings for planned silver jewellery purchases. Redeem on silver articles & jewellery as
+                                per Fedha’s Digi Silver redemption policy.
+                            </p>
+                        </section>
+
+                        <!-- Websites Section -->
+                        <article class="about-us-card">
+                            <h3 id="about-us-websites-heading" class="about-us-card__title">Our Websites</h3>
+                            <div class="about-us-card__body">
+                                <ul class="about-us-website-links">
+                                    <li>
+                                        <a href="https://www.challanijewels.com/"
+                                            class="about-us-website-link about-us-website-link--cjm" target="_blank"
+                                            rel="noopener noreferrer">
+                                            Challani Jewellery Mart
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.fedhabychallani.com/"
+                                            class="about-us-website-link about-us-website-link--fedha" target="_blank"
+                                            rel="noopener noreferrer">
+                                            Fedha by Challani
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://lillebychallani.com/"
+                                            class="about-us-website-link about-us-website-link--lille" target="_blank"
+                                            rel="noopener noreferrer">
+                                            Lille By Challani
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+
+                        <!-- Our Team Carousel (Infinite Train Marquee) -->
+                        <section class="about-us-plain-section about-us-plain-section--team" aria-label="Our team">
+                            <h3 class="about-us-plain-section__title">Our Team</h3>
+                            <div class="about-us-team-carousel" aria-label="Our team">
+                                <div class="about-us-team-carousel__viewport">
+                                    <ul class="about-us-team-carousel__track">
+                                        <!-- Slide 1 -->
+                                        <li class="about-us-team-carousel__slide">
+                                            <div class="about-us-team-carousel__photo-wrap">
+                                                <img src="assets/teams/team1.webp" alt="Jayanthilal Challani"
+                                                    class="about-us-team-carousel__photo" loading="lazy" />
+                                            </div>
+                                            <p class="about-us-team-carousel__name">Jayanthilal Challani</p>
+                                            <p class="about-us-team-carousel__role">CHAIRMAN</p>
+                                        </li>
+                                        <!-- Slide 2 -->
+                                        <li class="about-us-team-carousel__slide">
+                                            <div class="about-us-team-carousel__photo-wrap">
+                                                <img src="assets/teams/team2.webp" alt="Goutham Challani"
+                                                    class="about-us-team-carousel__photo" loading="lazy" />
+                                            </div>
+                                            <p class="about-us-team-carousel__name">Goutham Challani</p>
+                                            <p class="about-us-team-carousel__role">DIRECTOR</p>
+                                        </li>
+                                        <!-- Slide 3 -->
+                                        <li class="about-us-team-carousel__slide">
+                                            <div class="about-us-team-carousel__photo-wrap">
+                                                <img src="assets/teams/team3.webp" alt="Sripal Challani"
+                                                    class="about-us-team-carousel__photo" loading="lazy" />
+                                            </div>
+                                            <p class="about-us-team-carousel__name">Sripal Challani</p>
+                                            <p class="about-us-team-carousel__role">DIRECTOR</p>
+                                        </li>
+                                        <!-- Slide 4 -->
+                                        <li class="about-us-team-carousel__slide">
+                                            <div class="about-us-team-carousel__photo-wrap">
+                                                <img src="assets/teams/team4.jpeg" alt="Rishub Challani"
+                                                    class="about-us-team-carousel__photo" loading="lazy" />
+                                            </div>
+                                            <p class="about-us-team-carousel__name">Rishub Challani</p>
+                                            <p class="about-us-team-carousel__role">DIRECTOR</p>
+                                        </li>
+
+                                        <!-- Duplicate for infinite seamless train loop -->
+                                        <li class="about-us-team-carousel__slide" aria-hidden="true">
+                                            <div class="about-us-team-carousel__photo-wrap">
+                                                <img src="assets/teams/team1.webp" alt=""
+                                                    class="about-us-team-carousel__photo" loading="lazy" />
+                                            </div>
+                                            <p class="about-us-team-carousel__name">Jayanthilal Challani</p>
+                                            <p class="about-us-team-carousel__role">CHAIRMAN</p>
+                                        </li>
+                                        <li class="about-us-team-carousel__slide" aria-hidden="true">
+                                            <div class="about-us-team-carousel__photo-wrap">
+                                                <img src="assets/teams/team2.webp" alt=""
+                                                    class="about-us-team-carousel__photo" loading="lazy" />
+                                            </div>
+                                            <p class="about-us-team-carousel__name">Goutham Challani</p>
+                                            <p class="about-us-team-carousel__role">DIRECTOR</p>
+                                        </li>
+                                        <li class="about-us-team-carousel__slide" aria-hidden="true">
+                                            <div class="about-us-team-carousel__photo-wrap">
+                                                <img src="assets/teams/team3.webp" alt=""
+                                                    class="about-us-team-carousel__photo" loading="lazy" />
+                                            </div>
+                                            <p class="about-us-team-carousel__name">Sripal Challani</p>
+                                            <p class="about-us-team-carousel__role">DIRECTOR</p>
+                                        </li>
+                                        <li class="about-us-team-carousel__slide" aria-hidden="true">
+                                            <div class="about-us-team-carousel__photo-wrap">
+                                                <img src="assets/teams/team4.jpeg" alt=""
+                                                    class="about-us-team-carousel__photo" loading="lazy" />
+                                            </div>
+                                            <p class="about-us-team-carousel__name">Rishub Challani</p>
+                                            <p class="about-us-team-carousel__role">DIRECTOR</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </main>
+
+            <!-- Sticky Tabbar Footer Simulation -->
+            <!-- <footer class="about-us-footer-wrap">
+        <div class="footer-tab-bar">
+          <a href="#" class="footer-tab-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Home</span>
+          </a>
+          <button type="button" class="footer-tab-item active" aria-current="page">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <line x1="12" y1="16" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="12" cy="8" r="1"/>
+            </svg>
+            <span>About Us</span>
+          </button>
+          <a href="#" class="footer-tab-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>Contact</span>
+          </a>
+          <a href="#" class="footer-tab-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span>Profile</span>
+          </a>
+        </div>
+      </footer> -->
+
+        </div>
+
+        <!-- <button type="button" id="aboutClose">Close</button> -->
     </dialog>
 
     <div id="pickedToast" class="picked-toast" hidden></div>
     <script src="company-selection.js"></script>
-  </body>
+</body>
+
 </html>

@@ -771,7 +771,7 @@ button {
 }
 
 .about-dialog {
-  width: min(22rem, calc(100vw - 2rem));
+  width: min(36rem, calc(100vw - 2rem));
   border: 0;
   border-radius: 1rem;
   padding: 1.15rem 1.2rem 1rem;
@@ -942,4 +942,1548 @@ button {
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* about us */
+/* //added by ajit mane new about us page added #255123 */
+
+/* ==========================================================================
+   CHALLANI UI - ABOUT US PAGE STYLES (STANDALONE PRODUCTION BUNDLE)
+   Extracted from: D:/SHARE/FATHIMA/10_08_2026_new_update/challani_ui/challani_ui
+   ========================================================================== */
+
+/* --- GOOGLE FONTS IMPORTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Dancing+Script:wght@600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Pinyon+Script&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
+
+/* --- RESET & BASE STYLES --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --font-challani: 'Cinzel', Georgia, 'Times New Roman', serif;
+  --font-fedha-primary: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-fedha-challani: 'Montserrat', system-ui, sans-serif;
+  --font-lille-primary: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-lille-script: 'Pinyon Script', 'Brush Script MT', cursive;
+  --font-lille-challani: 'Montserrat', system-ui, sans-serif;
+  --cjm-maroon: #982021;
+  --fedha-brand-green: #08403d;
+  --lille-brand-pink: #db2777;
+  --m3-ui-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f1f5f9;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App container simulation (Mobile/Responsive shell) */
+.mobile-app-shell {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  .mobile-app-shell {
+    margin: 2rem auto;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    min-height: calc(100vh - 4rem);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* Top Hub Navigation Bar */
+.hub-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0f172a;
+  padding: 0.5rem 0.85rem;
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hub-nav-bar a {
+  color: #f8fafc;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.hub-nav-bar a:hover {
+  opacity: 0.8;
+}
+
+.hub-nav-bar .hub-nav-links {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.hub-nav-bar .hub-nav-links a {
+  color: #cbd5e1;
+  font-size: 0.68rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.25rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hub-nav-bar .hub-nav-links a:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+/* Top Brand Switcher Bar (CJM / Fedha / Lille) */
+.brand-switcher-bar {
+  display: flex;
+  background: #1e1e24;
+  padding: 0.45rem 0.65rem;
+  gap: 0.35rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+
+.brand-switcher-btn {
+  flex: 1;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  padding: 0.45rem 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.brand-switcher-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.brand-switcher-btn.active {
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.brand-switcher-btn--cjm.active {
+  color: #982021;
+}
+
+.brand-switcher-btn--fedha.active {
+  color: #08403d;
+}
+
+.brand-switcher-btn--lille.active {
+  color: #db2777;
+}
+
+/* --- BRAND FONT UTILITIES --- */
+.challani-font, .challani-font * {
+  font-family: var(--font-challani) !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9d1f21;
+}
+
+.partner-challani-font {
+  font-family: var(--font-fedha-challani) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: #ffffff;
+}
+
+.fedha-font-primary {
+  font-family: var(--font-fedha-primary) !important;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.lille-font-primary {
+  font-family: var(--font-lille-primary) !important;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.fedha-font-by {
+  font-family: var(--font-fedha-primary) !important;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.72em;
+}
+
+.lille-font-by {
+  font-family: var(--font-lille-script) !important;
+  font-weight: 400;
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+/* Flow page brand header */
+.flow-page-chrome {
+  padding: 0.65rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.flow-page-chrome--cjm {
+  background: #ffffff;
+}
+
+.flow-page-chrome--fedha {
+  background: #ecf6f4;
+}
+
+.flow-page-chrome--lille {
+  background: #fdf2f8;
+}
+
+.flow-page-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.flow-page-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--au-primary, #982021);
+  letter-spacing: 0.02em;
+}
+
+.flow-page-brand-logo-img {
+  height: 2.2rem;
+  max-width: 6.5rem;
+  object-fit: contain;
+}
+
+/* Floating video controls */
+.video-ctrl-pill {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s;
+}
+
+.video-ctrl-pill:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: scale(1.04);
+}
+
+/* Sticky footer tabbar simulation */
+.about-us-footer-wrap {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.footer-tab-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.55rem 0.5rem 0.65rem;
+}
+
+.footer-tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0.75rem;
+  color: #9ca3af;
+  font-family: inherit;
+  font-size: 0.65rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.footer-tab-item svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.footer-tab-item.active {
+  color: var(--au-primary, #982021);
+  font-weight: 700;
+}
+
+/* Original about-us-page CSS */
+/* About Us — card-based layout, white page background */
+
+#about-us-page.about-us-page--cjm {
+  --au-surface: rgba(255, 255, 255, 0.92);
+  --au-surface-muted: rgba(255, 251, 246, 0.95);
+  --au-border: rgba(var(--au-primary-rgb), 0.1);
+  --au-shadow: 0 4px 18px rgba(var(--au-primary-rgb), 0.07);
+  --au-body-text: #0e0f0f;
+}
+
+#about-us-page.about-us-page--fedha {
+  --au-surface: rgba(255, 255, 255, 0.95);
+  --au-surface-muted: rgba(236, 246, 244, 0.95);
+  --au-border: rgba(var(--au-primary-rgb), 0.12);
+  --au-shadow: 0 4px 18px rgba(var(--au-primary-rgb), 0.08);
+  --au-body-text: #0e0f0f;
+}
+
+#about-us-page.about-us-page--lille {
+  --au-surface: rgba(255, 255, 255, 0.95);
+  --au-surface-muted: rgba(253, 242, 248, 0.95);
+  --au-border: rgba(var(--au-primary-rgb), 0.12);
+  --au-shadow: 0 4px 18px rgba(var(--au-primary-rgb), 0.08);
+  --au-body-text: #0e0f0f;
+}
+
+#about-us-page.schemes-page {
+  --m3-ui-family: 'Roboto', 'Helvetica Neue', Arial;
+  --au-bg: #ffffff;
+  background: #ffffff !important;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+#about-us-page.about-us-page--cjm.schemes-page {
+  --au-bg: #ffffff;
+  background: #ffffff !important;
+}
+
+#about-us-page .flow-page-chrome,
+#about-us-page .cjm-dash-logo-section {
+  flex-shrink: 0;
+}
+
+/* Taller ornate header on About Us */
+#about-us-page .cjm-dash-header {
+  --cjm-dash-header-h: clamp(9.75rem, 26dvh, 12.5rem);
+}
+
+#about-us-page .cjm-dash-header__brand {
+  width: min(48%, 10.5rem);
+  max-width: 10.5rem;
+  top: calc(0.85rem + 0px);
+}
+
+#about-us-page .cjm-dash-header__brand-logo {
+  max-width: 9rem;
+  max-height: 3rem;
+}
+
+#about-us-page .cjm-dash-header__left-img {
+  object-position: 50% 46%;
+}
+
+@media (max-width: 479px) {
+  #about-us-page .cjm-dash-header {
+    --cjm-dash-header-h: clamp(9rem, 24dvh, 11.5rem);
+  }
+
+  #about-us-page .cjm-dash-header__brand {
+    width: min(52%, 9.25rem);
+    max-width: 9.25rem;
+  }
+
+  #about-us-page .cjm-dash-header__brand-logo {
+    max-width: 8rem;
+    max-height: 2.75rem;
+  }
+}
+
+
+#about-us-page .home-dashboard-body {
+  flex: 1 1 0%;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #ffffff;
+}
+
+#about-us-page.about-us-page--cjm .home-dashboard-body {
+  background: #ffffff;
+}
+
+#about-us-page .home-dashboard-body .dashboard-content.about-us-flow-content {
+  flex: 0 0 auto;
+  /* Clear space under straddling header logo so "About Challani" is fully visible */
+  padding: 1.5rem  var(--app-page-gutter, 10px) 0.75rem;
+  background: #ffffff;
+}
+
+#about-us-page.about-us-page--cjm .home-dashboard-body .dashboard-content.about-us-flow-content {
+  background: #ffffff;
+}
+
+#about-us-page.about-us-page--fedha.schemes-page {
+  background: #e6ebf7 !important;
+  --au-bg: #e6ebf7;
+}
+
+#about-us-page.about-us-page--fedha .home-dashboard-body,
+#about-us-page.about-us-page--fedha .home-dashboard-body .dashboard-content.about-us-flow-content {
+  background: #e6ebf7;
+}
+
+#about-us-page .reg-premium-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+#about-us-page .reg-premium-bg.reg-premium-bg--cream {
+  background: #ffffff;
+}
+
+#about-us-page .auth-corner-overlay {
+  position: absolute;
+  top: 0.6875rem;
+  right: -1.625rem;
+  width: min(44vw, 11.5rem);
+  height: min(44vw, 11.5rem);
+  pointer-events: none;
+  z-index: 1;
+  transform: rotate(12deg);
+  transform-origin: top right;
+}
+
+#about-us-page .auth-corner-overlay__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top right;
+  opacity: 0.1;
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 479px) {
+  #about-us-page .auth-corner-overlay {
+    width: min(48vw, 10rem);
+    height: min(48vw, 10rem);
+    transform: rotate(10deg);
+  }
+
+  #about-us-page .auth-corner-overlay__img {
+    opacity: 0.45;
+  }
+}
+
+#about-us-page .about-us-flow-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#about-us-page .about-us-page-head {
+  display: grid;
+  grid-template-columns: 2rem 1fr 2rem;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.65rem;
+}
+
+#about-us-page .about-us-page-head-spacer {
+  width: 2rem;
+  height: 1px;
+}
+
+#about-us-page .about-us-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0.15rem 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--au-primary, #982021);
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+#about-us-page .about-us-back svg {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+}
+
+#about-us-page .about-us-back:focus-visible {
+  outline: none;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 2px rgba(var(--au-primary-rgb), 0.35);
+}
+
+#about-us-page .about-us-hero-title {
+  margin: 0 0 0.65rem;
+  font-family: var(--m3-ui-family), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(0.95rem, 4.2vw, 1.05rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: var(--au-primary);
+  position: relative;
+  z-index: 1;
+}
+
+#about-us-page .about-us-hero-title .challani-font {
+  font-family: var(--font-challani, 'Cinzel', Georgia, serif) !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--au-primary);
+}
+
+#about-us-page .about-us-section-title {
+  font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  font-size: clamp(0.92rem, 4vw, 1.02rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--au-primary);
+}
+
+#about-us-page .about-us-card__title {
+  font-family: var(--m3-ui-family), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(0.92rem, 4vw, 1.02rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--au-primary);
+}
+
+#about-us-page .about-us-intro {
+  flex-shrink: 0;
+  margin: 0 0 0.65rem;
+  padding: 0 0.35rem;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 0.74rem;
+  font-weight: 400;
+  line-height: 1.58;
+  text-align: left;
+  color: var(--au-body-text, #0e0f0f);
+}
+
+#about-us-page .about-us-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 1rem;
+  box-sizing: border-box;
+}
+
+/* —— Cards —— */
+#about-us-page .about-us-card {
+  padding: 0.85rem 0.9rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(165deg, rgba(0, 0, 0, 0.08) 0%, #fff 55%, #fff9f0 100%);
+  border: 1px solid rgba(201, 162, 39, 0.18);
+  box-shadow: 0 4px 18px rgba(var(--au-primary-rgb), 0.06);
+  box-sizing: border-box;
+}
+
+
+#about-us-page .about-us-hero-block {
+  padding: 0 0.35rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#about-us-page .about-us-plain-section {
+  padding: 0 0.35rem;
+  box-sizing: border-box;
+}
+
+#about-us-page .about-us-plain-section__title {
+  margin: 0 0 0.65rem;
+  font-family: var(--m3-ui-family), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(0.92rem, 4vw, 1.02rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: center;
+  color: var(--au-primary);
+}
+
+#about-us-page .about-us-card__title {
+  margin: 0 0 0.65rem;
+  text-align: center;
+}
+
+#about-us-page .about-us-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+#about-us-page .about-us-eyebrow {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-challani, 'Cinzel', Georgia, serif);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--au-eyebrow, var(--au-accent));
+}
+
+#about-us-page .about-us-headline {
+  margin: 0;
+  font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  font-size: clamp(0.92rem, 4vw, 1.02rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--au-primary);
+}
+
+#about-us-page .about-us-hero-video-wrap {
+  position: relative;
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 2px;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    #f8e9b0 0%,
+    #ffd180 22%,
+    #c9a227 48%,
+    #9b6529 72%,
+    #f5e6a8 100%
+  );
+  box-shadow:
+    0 0 0 1px rgba(201, 162, 39, 0.35),
+    0 3px 14px rgba(155, 101, 41, 0.22),
+    inset 0 1px 0 rgba(255, 236, 179, 0.45);
+}
+
+#about-us-page .about-us-hero-video {
+  display: block;
+  width: 100%;
+  max-height: min(52vw, 14rem);
+  object-fit: cover;
+  border-radius: calc(0.6rem - 2px);
+  background: #000;
+}
+
+/* —— Stats strip —— */
+#about-us-page .about-us-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0 0.35rem;
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+#about-us-page .about-us-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.1rem;
+  width: min(28vw, 5.35rem);
+  aspect-ratio: 1;
+  padding: 0.35rem 0.25rem;
+  border-radius: 50%;
+  background: linear-gradient(165deg, #c9a227 0%, #fffaf3 100%);
+  border: 1px solid var(--au-border);
+  box-shadow: var(--au-shadow);
+  box-sizing: border-box;
+}
+
+#about-us-page .about-us-stat-value {
+  font-family: var(--font-challani, 'Cinzel', Georgia, serif);
+  font-size: clamp(0.68rem, 3.2vw, 0.82rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--au-primary);
+}
+
+#about-us-page .about-us-stat-label {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: clamp(0.36rem, 1.6vw, 0.44rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: #6b7280;
+}
+
+/* —— Offering chips —— */
+#about-us-page .about-us-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+#about-us-page .about-us-chip-row--collections {
+  margin-top: 0.15rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(var(--au-primary-rgb), 0.08);
+}
+
+#about-us-page .about-us-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.28rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+#about-us-page .about-us-chip--metal {
+  font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  color: var(--au-primary);
+  background: rgba(var(--au-primary-rgb), 0.07);
+  border: 1px solid rgba(var(--au-primary-rgb), 0.12);
+}
+
+#about-us-page .about-us-chip--collection {
+  font-family: var(--m3-ui-family), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--au-accent, #9b6529);
+  background: rgba(155, 101, 41, 0.08);
+  border: 1px solid rgba(155, 101, 41, 0.14);
+}
+
+/* —— Savings schemes (banner + detail list) —— */
+#about-us-page .about-us-schemes {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#about-us-page .about-us-schemes__section-title {
+  margin: 0 0 0.75rem;
+  text-align: center;
+  font-family: var(--m3-ui-family), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(0.92rem, 4vw, 1.02rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--au-primary);
+}
+
+#about-us-page .about-us-schemes-brand {
+  width: 100%;
+}
+
+#about-us-page .about-us-schemes-brand + .about-us-schemes-brand {
+  margin-top: 1rem;
+}
+
+#about-us-page .about-us-schemes-brand__details {
+  width: 100%;
+  margin-top: 0.45rem;
+  padding: 0 0.35rem;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+#about-us-page .about-us-schemes-banner {
+  position: relative;
+  width: min(88vw, 15.5rem);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  box-sizing: border-box;
+}
+
+#about-us-page .about-us-schemes-banner__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#about-us-page .about-us-schemes-banner__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+#about-us-page .about-us-schemes-banner--cjm {
+  box-shadow: 0 4px 18px rgba(152, 32, 33, 0.22);
+  background: #0a0a0a;
+}
+
+#about-us-page .about-us-schemes-banner--cjm .about-us-schemes-banner__bg {
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+}
+
+#about-us-page .about-us-schemes-banner--cjm .about-us-schemes-banner__shade {
+  background: linear-gradient(180deg, rgb(199 38 55 / 72%) 0%, rgb(152 32 33 / 75%) 42%, rgb(155 15 26 / 52%) 68%, rgb(119 48 48 / 32%) 100%);
+}
+
+#about-us-page .about-us-schemes-banner--fedha,
+#about-us-page .about-us-schemes-banner--lille {
+  width: min(76vw, 12rem);
+}
+
+#about-us-page .about-us-schemes-banner--fedha .about-us-schemes-banner__content,
+#about-us-page .about-us-schemes-banner--lille .about-us-schemes-banner__content {
+  padding: 0.5rem 0.4rem 0.45rem;
+}
+
+#about-us-page .about-us-schemes-banner__split {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#about-us-page .about-us-schemes-banner__metal--center {
+  margin: 0 0 0.35rem;
+  width: 100%;
+  text-align: center;
+}
+
+#about-us-page .about-us-schemes-banner__columns--split {
+  width: 100%;
+  align-items: stretch;
+}
+
+/* One scheme (e.g. Fedha Shuba Avatar): center name in the card */
+#about-us-page .about-us-schemes-banner__columns--split:has(> :only-child) {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+#about-us-page .about-us-schemes-banner__columns--split:has(> :only-child) .about-us-schemes-banner__column {
+  width: 100%;
+  padding: 0 0.5rem;
+  align-items: center;
+}
+
+#about-us-page .about-us-schemes-banner--fedha .about-us-schemes-banner__columns--split:has(> :only-child) .about-us-schemes-banner__name--serif {
+  font-size: clamp(0.92rem, 4vw, 1.1rem);
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+#about-us-page .about-us-schemes-banner--fedha .about-us-schemes-banner__columns--split:has(> :only-child) .about-us-schemes-banner__tagline {
+  max-width: none;
+  text-align: center;
+}
+
+#about-us-page .about-us-schemes-banner__dual {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#about-us-page .about-us-schemes-banner__metal-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  width: 100%;
+  margin-bottom: 0.35rem;
+}
+
+#about-us-page .about-us-schemes-banner__metal-row .about-us-schemes-banner__metal {
+  margin: 0;
+  text-align: center;
+}
+
+#about-us-page .about-us-schemes-banner__columns--dual {
+  width: 100%;
+  align-items: start;
+}
+
+#about-us-page .about-us-schemes-banner--fedha .about-us-schemes-banner__metal--center,
+#about-us-page .about-us-schemes-banner--lille .about-us-schemes-banner__metal--center {
+  font-size: clamp(0.62rem, 2.8vw, 0.72rem);
+}
+
+#about-us-page .about-us-schemes-banner--fedha .about-us-schemes-banner__column {
+  padding: 0 0.22rem;
+}
+
+#about-us-page .about-us-schemes-banner--fedha .about-us-schemes-banner__column--divider {
+  padding-left: 0.38rem;
+}
+
+#about-us-page .about-us-schemes-banner--fedha .about-us-schemes-banner__name--serif {
+  font-size: clamp(0.66rem, 2.9vw, 0.76rem);
+  letter-spacing: 0.02em;
+}
+
+#about-us-page .about-us-schemes-banner--fedha .about-us-schemes-banner__tagline {
+  max-width: 6.75rem;
+  font-size: clamp(0.34rem, 1.45vw, 0.4rem);
+}
+
+#about-us-page .about-us-schemes-banner--lille .about-us-schemes-banner__name--script {
+  font-size: clamp(0.9rem, 4.2vw, 1.06rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+#about-us-page .about-us-schemes-banner--lille .about-us-schemes-banner__tagline {
+  max-width: 7.5rem;
+  font-size: clamp(0.38rem, 1.65vw, 0.46rem);
+}
+
+#about-us-page .about-us-schemes-banner--fedha .about-us-schemes-banner__brand,
+#about-us-page .about-us-schemes-banner--lille .about-us-schemes-banner__brand {
+  margin-top: 0.35rem;
+  font-size: clamp(0.72rem, 3.2vw, 0.84rem);
+}
+
+#about-us-page .about-us-schemes-banner--fedha {
+  box-shadow: 0 4px 18px rgba(8, 64, 61, 0.22);
+}
+
+#about-us-page .about-us-schemes-banner--fedha .about-us-schemes-banner__shade {
+  background: linear-gradient(
+    165deg,
+    rgba(10, 74, 69, 0.84) 0%,
+    rgba(8, 64, 61, 0.8) 48%,
+    rgba(6, 53, 48, 0.86) 100%
+  );
+}
+
+#about-us-page .about-us-schemes-banner--lille {
+  border-color: rgba(244, 114, 182, 0.35);
+  box-shadow: 0 4px 18px rgba(219, 39, 119, 0.22);
+}
+
+#about-us-page .about-us-schemes-banner--lille .about-us-schemes-banner__shade {
+  background: linear-gradient(
+    165deg,
+    rgba(190, 24, 93, 0.58) 0%,
+    rgba(219, 39, 119, 0.52) 48%,
+    rgba(157, 23, 77, 0.62) 100%
+  );
+}
+
+#about-us-page .about-us-schemes-banner__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0.6rem 0.45rem 0.5rem;
+  box-sizing: border-box;
+}
+
+#about-us-page .about-us-schemes-banner__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  flex: 1;
+  align-items: center;
+}
+
+#about-us-page .about-us-schemes-banner__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  padding: 0 0.35rem;
+  box-sizing: border-box;
+}
+
+#about-us-page .about-us-schemes-banner__column--divider {
+  border-left: 1px solid rgba(201, 162, 39, 0.55);
+}
+
+#about-us-page .about-us-schemes-banner__metal {
+  margin: 0 0 0.4rem;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(0.56rem, 2.5vw, 0.66rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #c9a227;
+  text-align: center;
+}
+
+#about-us-page .about-us-schemes-banner__items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.38rem;
+  width: 100%;
+}
+
+#about-us-page .about-us-schemes-banner--cjm .about-us-schemes-banner__items {
+  gap: 0.28rem;
+}
+
+#about-us-page .about-us-schemes-banner__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12rem;
+  width: 100%;
+  text-align: center;
+}
+
+#about-us-page .about-us-schemes-banner__name {
+  margin: 0;
+  color: #ffffff;
+  line-height: 1.15;
+}
+
+#about-us-page .about-us-schemes-banner__name--script {
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  font-size: clamp(0.92rem, 4.2vw, 1.1rem);
+  font-weight: 600;
+}
+
+#about-us-page .about-us-schemes-banner__name--serif {
+  font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  font-size: clamp(0.56rem, 2.6vw, 0.66rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+#about-us-page .about-us-schemes-banner__tagline {
+  margin: 0;
+  max-width: 8.5rem;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(0.34rem, 1.5vw, 0.42rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+#about-us-page .about-us-schemes-banner__empty {
+  display: none;
+}
+
+#about-us-page .about-us-schemes-banner__brand {
+  margin: 0.45rem 0 0;
+  font-size: clamp(0.78rem, 3.6vw, 0.92rem);
+  font-weight: 700;
+  text-align: center;
+  text-transform: none;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+#about-us-page .about-us-schemes-banner__brand--cjm {
+  font-family: var(--font-challani, 'Cinzel', Georgia, serif) !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+#about-us-page .about-us-schemes-banner__brand--fedha,
+#about-us-page .about-us-schemes-banner__brand--lille {
+  font-family: var(--font-fedha-primary, 'Playfair Display', Georgia, serif) !important;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+#about-us-page .about-us-schemes-banner__brand--lille {
+  font-family: var(--font-lille-primary, 'Playfair Display', Georgia, serif) !important;
+  letter-spacing: 0.03em;
+}
+
+#about-us-page .about-us-schemes-banner__brand .fedha-font-by,
+#about-us-page .about-us-schemes-banner__brand .lille-font-by {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+#about-us-page .about-us-schemes-banner__brand .partner-challani-font {
+  font-family: var(--font-fedha-challani, 'Montserrat', system-ui, sans-serif) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #ffffff;
+}
+
+#about-us-page .about-us-schemes-banner--lille .about-us-schemes-banner__brand .partner-challani-font {
+  font-family: var(--font-lille-challani, 'Montserrat', system-ui, sans-serif) !important;
+}
+
+#about-us-page .about-us-schemes-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#about-us-page .about-us-schemes-details__item {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#about-us-page .about-us-schemes-details__text {
+  margin: 0;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  line-height: 1.55;
+  text-align: left;
+  color: var(--au-body-text, #0e0f0f);
+}
+
+#about-us-page .about-us-schemes-details__name {
+  font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--au-primary, #982021);
+}
+
+#about-us-page .about-us-schemes-details__item--cjm .about-us-schemes-details__name {
+  color: var(--cjm-theme-maroon, #982021);
+}
+
+#about-us-page .about-us-schemes-details__item--fedha .about-us-schemes-details__name {
+  color: #08403d;
+}
+
+#about-us-page .about-us-schemes-details__item--lille .about-us-schemes-details__name {
+  color: #db2777;
+}
+
+/* —— Dense blocks (Thangamayil-style label + paragraph) —— */
+#about-us-page .about-us-dense-block {
+  margin: 0;
+  padding: 0 0.35rem;
+}
+
+#about-us-page .about-us-dense-block__label {
+  margin: 0 0 0.35rem;
+  font-family: var(--m3-ui-family), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(0.92rem, 4vw, 1.02rem);
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--au-primary);
+}
+
+#about-us-page .about-us-dense-block__text {
+  margin: 0;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 0.74rem;
+  font-weight: 400;
+  line-height: 1.55;
+  text-align: left;
+  color: var(--au-body-text, #0e0f0f);
+}
+
+/* —— Website links (standard hyperlinks) —— */
+#about-us-page .about-us-website-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#about-us-page .about-us-website-links li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+#about-us-page .about-us-website-link {
+  display: inline-block;
+  max-width: 100%;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: clamp(0.68rem, 2.8vw, 0.76rem);
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+  color: var(--au-primary, #982021);
+  cursor: pointer;
+  word-break: break-all;
+}
+
+#about-us-page .about-us-website-link:visited {
+  color: var(--au-primary, #982021);
+}
+
+#about-us-page .about-us-website-link:hover {
+  color: var(--au-accent, #9b6529);
+  text-decoration-thickness: 2px;
+}
+
+#about-us-page .about-us-website-link:active {
+  color: var(--au-primary, #982021);
+  opacity: 0.85;
+}
+
+#about-us-page .about-us-website-link:focus-visible {
+  outline: 2px solid rgba(var(--au-primary-rgb), 0.45);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* —— Team carousel —— */
+#about-us-page .about-us-plain-section--team {
+  padding-bottom: 0;
+}
+
+#about-us-page .about-us-team-carousel {
+  width: 100%;
+}
+
+#about-us-page .about-us-team-carousel__viewport {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+}
+
+#about-us-page .about-us-team-carousel__track {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.85rem, 4vw, 1.35rem);
+  width: max-content;
+  margin: 0;
+  padding: 0.25rem 0 0.15rem;
+  list-style: none;
+  animation: about-us-team-marquee 28s linear infinite;
+  will-change: transform;
+}
+
+#about-us-page .about-us-team-carousel:hover .about-us-team-carousel__track {
+  animation-play-state: paused;
+}
+
+@keyframes about-us-team-marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+#about-us-page .about-us-team-carousel__slide {
+  flex: 0 0 auto;
+  width: min(42vw, 7.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#about-us-page .about-us-team-carousel__photo-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(var(--au-primary-rgb), 0.12);
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(var(--au-primary-rgb), 0.08);
+}
+
+#about-us-page .about-us-team-carousel__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+#about-us-page .about-us-team-carousel__name {
+  margin: 0.55rem 0 0.12rem;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--au-primary);
+}
+
+#about-us-page .about-us-team-carousel__role {
+  margin: 0;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  color: #6b7280;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #about-us-page .about-us-team-carousel__track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  #about-us-page .about-us-team-carousel__slide[aria-hidden='true'] {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  #about-us-page .about-us-flow-content {
+    padding-inline: 0.55rem;
+  }
+
+  #about-us-page .about-us-card {
+    padding: 0.75rem 0.7rem;
+  }
+
+  #about-us-page .about-us-dense-block__text,
+  #about-us-page .about-us-intro {
+    font-size: 0.68rem;
+  }
+
+  #about-us-page .about-us-team-carousel__slide {
+    width: min(40vw, 6.75rem);
+  }
+}
+
+/* Footer — centered Switch, brand accent */
+#about-us-page .about-us-footer.home-dash-footer--cjm {
+  --footer-tab-active: #982021;
+}
+
+#about-us-page .about-us-footer.home-dash-footer--fedha {
+  --footer-tab-active: #08403d;
+}
+
+#about-us-page .about-us-footer.home-dash-footer--lille {
+  --footer-tab-active: #db2777;
+}
+
+#about-us-page .about-us-footer .home-dash-footer-tabbar-shell {
+  background: #ffffff;
+  box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.12);
+}
+
+#about-us-page .brand-footer-action-bar--switch-only {
+  justify-content: center;
+}
+
+#about-us-page .about-us-footer .brand-footer-action-bar--tabbar .brand-footer-action-btn {
+  background: transparent;
+  color: #9ca3af;
+  box-shadow: none;
+}
+
+#about-us-page .about-us-footer .brand-footer-action-bar--tabbar .brand-footer-action-label {
+  color: #9ca3af;
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+#about-us-page .about-us-footer .brand-footer-action-bar--tabbar .brand-footer-action-btn--active,
+#about-us-page
+  .about-us-footer
+  .brand-footer-action-bar--tabbar
+  .brand-footer-action-item--active
+  .brand-footer-action-label {
+  color: #982021;
+  font-weight: 700;
+}
+
+/* about us header section with close icon */
+/* ==========================================================================
+   ABOUT US DIALOG - FIXED HEADER + SCROLLABLE CONTENT
+   ========================================================================== */
+
+.about-dialog {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  height: min(85vh, calc(100dvh - 2rem));
+  max-height: 85vh;
+  max-height: 85dvh;
+  padding: 0;
+}
+
+/* Header remains fixed at the top of the dialog */
+.about-dialog > .flow-page-chrome {
+  position: relative;
+  top: auto;
+  z-index: 1000;
+  flex: 0 0 auto;
+  width: 100%;
+  background: #ffffff;
+}
+
+/* Title left, close icon right */
+.about-dialog .flow-page-title-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.65rem;
+}
+
+.about-dialog .flow-page-title {
+  margin-right: auto;
+}
+
+.about-dialog .about-dialog-close {
+  margin-left: auto;
+  flex: 0 0 auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: #982021 !important;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.about-dialog .about-dialog-close svg {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+  stroke: #982021;
+  visibility: visible;
+  opacity: 1;
+}
+
+.about-dialog .about-dialog-close:hover {
+  background: rgba(152, 32, 33, 0.08) !important;
+  transform: scale(1.04);
+}
+
+/* About Us page takes remaining dialog height */
+.about-dialog > #about-us-page {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Only this section scrolls */
+.about-dialog > #about-us-page > .home-dashboard-body {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  /* Hide scrollbar but keep scrolling */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.about-dialog > #about-us-page > .home-dashboard-body::-webkit-scrollbar {
+  display: none;
 }
