@@ -2395,7 +2395,13 @@ body {
    ABOUT US DIALOG - FIXED HEADER + SCROLLABLE CONTENT
    ========================================================================== */
 
-.about-dialog {
+/* Hide About Us when the dialog is closed */
+.about-dialog:not([open]) {
+  display: none;
+}
+
+/* Show About Us only when opened */
+.about-dialog[open] {
   display: flex;
   flex-direction: column;
   overflow: hidden;
